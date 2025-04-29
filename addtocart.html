@@ -1,198 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Add to Cart</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GlobalLLC - My Cart</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background: #ecf5ff;
-      overflow-x: hidden;
-      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e3f2fd 0%, #b2ebf2 100%);
+      font-family: 'Poppins', sans-serif;
     }
-    .navbar {
-      background-color: white;
-    }
-    .navbar-brand img {
-      height: 48px;
-    }
-    .dropdown-menu {
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .fa-cart-shopping {
-      position: relative;
-    }
-    .container.cart-main {
+    .cart-main {
       display: flex;
-      padding: 30px;
-      gap: 20px;
+      gap: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
-      animation: fadeIn 0.8s ease-in-out;
       max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    #root {
-      flex: 3;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
+    .cart-section {
+      flex: 2;
+      min-width: 320px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
     }
-    .box {
-      background: white;
-      border-radius: 20px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeIn 1s ease-in-out;
-    }
-    .box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-    .img-box {
+    .cart-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00bcd4;
+      margin-bottom: 1.5rem;
       text-align: center;
+      letter-spacing: 1px;
     }
-    .images {
-      max-width: 100%;
-      height: 150px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    .bottom {
-      margin-top: 15px;
-      text-align: center;
-    }
-    .bottom p {
-      font-weight: 600;
-      font-size: 16px;
-    }
-    .bottom h2 {
-      color: #4c4cff;
-      font-size: 18px;
-    }
-    .bottom button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #4c4cff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .bottom button:hover {
-      background: #3737cc;
-    }
-    .sidebar {
-      flex: 1;
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      min-width: 280px;
-      height: fit-content;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    .head {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-      text-align: center;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
-    }
-    #cartItem {
-      max-height: 300px;
-      overflow-y: auto;
+    .cart-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
     .cart-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 15px;
-      padding: 10px;
-      background: #f0f0f0;
-      border-radius: 10px;
+      margin-bottom: 1.2rem;
+      padding: 0.8rem 0.5rem;
+      background: linear-gradient(135deg, #b2ebf2 0%, #e3f2fd 100%);
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.06);
+      color: #1976d2;
+      gap: 1rem;
     }
-    .row-img {
-      flex: 0 0 50px;
+    .cart-item-img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      background: #fff;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.06);
     }
-    .rowimg {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    .cart-item p {
+    .cart-item-title {
       flex: 1;
-      margin-left: 10px;
-      font-size: 14px;
+      margin-left: 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 600;
     }
-    .cart-item h2 {
-      font-size: 14px;
-      margin: 0 10px;
+    .cart-item-price {
+      font-size: 1.1rem;
+      color: #00bcd4;
+      font-weight: 700;
+      margin-right: 0.5rem;
+      min-width: 70px;
+      text-align: right;
     }
-    .fa-trash {
-      color: red;
+    .cart-item-remove {
+      color: #dc3545;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+      transition: transform 0.2s;
     }
-    .fa-trash:hover {
+    .cart-item-remove:hover {
       transform: scale(1.2);
     }
-    .foot {
+    .cart-empty {
       text-align: center;
-      margin-top: 20px;
-      border-top: 2px solid #ccc;
-      padding-top: 15px;
-      color: rgb(0, 0, 0);
-      animation: fadeIn 1.5s ease-in-out;
+      color: #888;
+      font-size: 1.2rem;
+      margin: 2rem 0;
     }
-    .foot p {
-      margin: 0;
-      font-size: 14px;
+    .cart-summary {
+      flex: 1;
+      min-width: 280px;
+      background: linear-gradient(135deg, #e3f2fd 0%, #b2ebf2 100%);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #1976d2;
+      height: fit-content;
     }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .summary-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      color: #00bcd4;
+      letter-spacing: 1px;
+    }
+    .summary-total-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1976d2;
+    }
+    .summary-total-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00bcd4;
+      margin-bottom: 1.5rem;
+    }
+    .checkout-btn {
+      width: 100%;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.75rem 0;
+      border-radius: 0.75rem;
+      background: linear-gradient(90deg, #4fc3f7 0%, #00bcd4 100%);
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0,188,212,0.12);
+      transition: background 0.2s;
+    }
+    .checkout-btn:disabled {
+      background: #b2ebf2;
+      color: #aaa;
+      cursor: not-allowed;
     }
     @media (max-width: 900px) {
-      .container.cart-main {
+      .cart-main {
         flex-direction: column;
-        padding: 15px;
+        gap: 2rem;
+        padding: 0 0.5rem;
       }
-      .sidebar {
-        margin-top: 30px;
+      .cart-summary {
+        margin-top: 2rem;
       }
     }
     @media (max-width: 480px) {
-      .images {
-        height: 120px;
+      .cart-item-img {
+        width: 36px;
+        height: 36px;
       }
-      .rowimg {
-        width: 40px;
-        height: 40px;
+      .cart-main {
+        padding: 0;
       }
-      .container.cart-main {
-        padding: 5px;
+      .cart-section, .cart-summary {
+        padding: 1rem 0.5rem;
       }
+    }
+    #cart-count {
+      background: #3c8d9c !important;
+      color: #ecebef !important;
+      font-size: 0.90rem !important;
+      min-width: 17px !important;
+      min-height: 17px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      left: 60% !important;
+      top: 19% !important;
+      transform: translate(-50%, 0) !important;
+      padding: 0 4px !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 8px rgba(0,188,212,0.12) !important;
+      border: 2px solid #fff !important;
+    }
+    .fa-cart-shopping {
+      font-size: 2.2rem !important;
+      color: #00bcd4 !important;
+      line-height: 52px !important;
+      text-align: center !important;
+      width: 52px !important;
+    }
+    .cart-float {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #00bcd4;
+      color: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(76,76,255,0.15);
+      cursor: pointer;
+      z-index: 1000;
+      font-size: 2rem;
+      transition: background 0.2s;
+    }
+    .cart-float:hover {
+      background: #0097a7;
+    }
+    .cart-float #cart-count {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #fff;
+      color: #00bcd4;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 2px 7px;
+      min-width: 22px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      border: 2px solid #00bcd4;
     }
   </style>
 </head>
 <body>
-  <!-- Bootstrap Navbar (consistent with other pages) -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="images/logo.jpeg" alt="GlobalLLC Logo"></a>
+      <a class="navbar-brand" href="#"><img src="images/logo.jpeg" alt="GlobalLLC Logo" style="height:48px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -214,117 +256,297 @@
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item d-lg-none"><a class="nav-link active" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
         </ul>
-        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative">
-          <i class="fa-solid fa-cart-shopping fa-lg"></i>
-          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative" style="display: inline-block; width: 52px; height: 52px;">
+          <span style="position: relative; display: inline-block; width: 52px; height: 52px;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="position-absolute badge rounded-pill">0</span>
+          </span>
         </a>
       </div>
     </div>
   </nav>
+
   <div class="container cart-main">
-    <div id="root"></div>
-    <div class="sidebar">
-      <div class="head">My Cart</div>
-      <div id="cartItem">Your cart is empty</div>
-      <div class="foot">
-        <h3>Total</h3>
-        <h2 id="total">$ 0.00</h2>
+    <!-- Cart Items Section -->
+    <div class="cart-section">
+      <div class="cart-title">Shopping Cart</div>
+      <ul class="cart-list" id="cart-list">
+        <!-- Cart items will be injected here -->
+      </ul>
+      <div id="cart-empty" class="cart-empty" style="display:none;">Your cart is empty.</div>
+    </div>
+    <!-- Cart Summary & Checkout -->
+    <div class="cart-summary">
+      <div>
+        <div class="summary-title">Order Summary</div>
+        <div class="summary-total-label">Total</div>
+        <div class="summary-total-value" id="cart-total">$0.00</div>
       </div>
+      <button id="checkout-btn" class="checkout-btn" onclick="checkoutCart()">Checkout</button>
     </div>
   </div>
-  <footer class="foot">
-    <p>&copy; 2025 GlobalLLC. All Rights Reserved.</p>
+
+  <!-- Customer Details Modal -->
+  <div class="modal fade" id="customerDetailsModal" tabindex="-1" aria-labelledby="customerDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="customer-details-form">
+        <div class="modal-header">
+          <h5 class="modal-title" id="customerDetailsModalLabel">Enter Your Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="customerName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="customerName" required>
+          </div>
+          <div class="mb-3">
+            <label for="customerEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="customerEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="customerAddress" class="form-label">Shipping Address</label>
+            <textarea class="form-control" id="customerAddress" rows="2" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="customerPhone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="customerPhone" required>
+          </div>
+        </div>
+        <div class="modal-footer d-flex flex-column gap-2">
+          <button type="submit" class="btn btn-theme w-100">Place Order (Cash on Delivery)</button>
+          <button type="button" id="pay-now-btn" class="btn btn-success w-100">Pay Now (Card/UPI)</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Cart Icon -->
+  <div class="cart-float" onclick="window.location.href='addtocart.html'">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count">0</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="footer-title">About Global Scaleup LLC</div>
+          <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-title">Quick Links</div>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-title">Contact</div>
+          <ul class="list-unstyled">
+            <li><a href="https://www.globalscaleupllc.com" target="_blank"><i class="fas fa-globe"></i> www.globalscaleupllc.com</a></li>
+            <li><a href="mailto:support@globalscaleupllc.com"><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a></li>
+            <li><a href="tel:+17372831916"><i class="fas fa-phone"></i> +1737-283-1916</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="mb-0">&copy; 2025 Global Scaleup LLC. All rights reserved.</p>
+    </div>
   </footer>
-  <!-- SweetAlert2 and Bootstrap JS -->
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    // TODO: Replace with your Firebase project config:
+    const firebaseConfig = {
+    apiKey: "AIzaSyD2kZj5yEl4GB33sa5rQttmcFiCDgTWF9U",
+    authDomain: "globalllc-f9daa.firebaseapp.com",
+    projectId: "globalllc-f9daa",
+    storageBucket: "globalllc-f9daa.firebasestorage.app",
+    messagingSenderId: "901837131301",
+    appId: "1:901837131301:web:70a55f90e2f333169279cc"
+  };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Product data with local images
-    const product = [
-      { id: 0, image: 'image/gg-1.jpg', title: 'Z Flip Foldable Mobile', price: 120 },
-      { id: 1, image: 'image/hh-2.jpg', title: 'Air Pods Pro', price: 60 },
-      { id: 2, image: 'image/ee-3.jpg', title: '250D DSLR Camera', price: 230 },
-      { id: 3, image: 'image/aa-1.jpg', title: 'Head Phones', price: 100 }
-    ];
-
-    // Render products
-    document.getElementById('root').innerHTML = product.map((item, i) => {
-      return `
-        <div class='box'>
-          <div class='img-box'>
-            <img class='images' src="${item.image}" alt="${item.title}">
-          </div>
-          <div class='bottom'>
-            <p>${item.title}</p>
-            <h2>$ ${item.price}.00</h2>
-            <button onclick="addToCart('${item.title}', ${item.price}, '${item.image}')">Add to cart</button>
-          </div>
-        </div>`;
-    }).join('');
-
-    // Cart logic
+    // --- Cart Logic for Cart Page ---
     function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
       document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
     }
 
-    function addToCart(title, price, image) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ title, price, image });
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      Swal.fire({
-        icon: 'success',
-        title: 'Added to Cart',
-        text: `${title} has been added to your cart.`,
-        showConfirmButton: false,
-        timer: 1200
-      });
-
-      updateCartCount();
-      displayCart();
-    }
-
-    function delElement(index) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    function removeCartItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      displayCart();
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
       updateCartCount();
     }
 
-    function displayCart() {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    function renderCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartList = document.getElementById('cart-list');
+      const cartEmpty = document.getElementById('cart-empty');
+      const cartTotal = document.getElementById('cart-total');
       let total = 0;
-      updateCartCount();
 
+      cartList.innerHTML = '';
       if (cart.length === 0) {
-        document.getElementById("cartItem").innerHTML = "Your cart is empty";
-        document.getElementById("total").innerHTML = "$ 0.00";
+        cartEmpty.style.display = '';
+        cartTotal.textContent = '$0.00';
+        document.getElementById('checkout-btn').disabled = true;
         return;
       }
+      cartEmpty.style.display = 'none';
+      document.getElementById('checkout-btn').disabled = false;
 
-      document.getElementById("cartItem").innerHTML = cart.map((item, index) => {
-        total += item.price;
-        return `
-          <div class='cart-item'>
-            <div class='row-img'>
-              <img class='rowimg' src="${item.image}" alt="${item.title}">
-            </div>
-            <p>${item.title}</p>
-            <h2>$ ${item.price.toFixed(2)}</h2>
-            <i class='fa-solid fa-trash' onclick='delElement(${index})'></i>
-          </div>`;
-      }).join('');
-
-      document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+      cart.forEach((item, index) => {
+        total += parseFloat(item.price || 0);
+        const li = document.createElement('li');
+        li.className = 'cart-item';
+        li.innerHTML = `
+          <img class="cart-item-img" src="${item.image || ''}" alt="${item.title || item.name}">
+          <span class="cart-item-title">${item.title || item.name}</span>
+          <span class="cart-item-price">$${parseFloat(item.price || 0).toFixed(2)}</span>
+          <span class="cart-item-remove" title="Remove" onclick="removeCartItem(${index})"><i class="fa-solid fa-trash"></i></span>
+        `;
+        cartList.appendChild(li);
+      });
+      cartTotal.textContent = '$' + total.toFixed(2);
     }
 
-    // On page load
-    window.onload = function() {
+    function checkoutCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) return;
+      var customerModal = new bootstrap.Modal(document.getElementById('customerDetailsModal'));
+      customerModal.show();
+    }
+
+    // Handle customer details form submission (Cash on Delivery)
+    document.addEventListener('DOMContentLoaded', function() {
       updateCartCount();
-      displayCart();
-    };
+      renderCart();
+
+      const form = document.getElementById('customer-details-form');
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const name = document.getElementById('customerName').value;
+          const email = document.getElementById('customerEmail').value;
+          const address = document.getElementById('customerAddress').value;
+          const phone = document.getElementById('customerPhone').value;
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const orderDate = new Date();
+          const orderId = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+
+          // Save order to Firestore (COD)
+          try {
+            await db.collection('orders').add({
+              orderId,
+              customer: { name, email, address, phone },
+              cart,
+              orderDate: orderDate.toISOString(),
+              status: 'pending',
+              paymentType: 'COD'
+            });
+          } catch (err) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Order Failed',
+              text: 'There was a problem placing your order. Please try again.',
+            });
+            return;
+          }
+
+          // Clear cart
+          localStorage.removeItem('cart');
+          renderCart();
+          updateCartCount();
+
+          // Hide the modal
+          var customerModal = bootstrap.Modal.getInstance(document.getElementById('customerDetailsModal'));
+          customerModal.hide();
+
+          // Show a thank you message with order ID
+          Swal.fire({
+            icon: 'success',
+            title: 'Order Placed!',
+            html: `<p>Thank you, <b>${name}</b>!<br>Your order (<b>${orderId}</b>) has been placed.<br>We will contact you at <b>${email}</b>.</p>`,
+            confirmButtonText: 'OK'
+          });
+        });
+      }
+
+      // Stripe Payment Integration
+      document.getElementById('pay-now-btn').addEventListener('click', async function() {
+        const name = document.getElementById('customerName').value;
+        const email = document.getElementById('customerEmail').value;
+        const address = document.getElementById('customerAddress').value;
+        const phone = document.getElementById('customerPhone').value;
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (!name || !email || !address || !phone || cart.length === 0) {
+          Swal.fire('Please fill all details and ensure your cart is not empty.');
+          return;
+        }
+        // Prepare line items for Stripe
+        const line_items = cart.map(item => ({
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: item.title || item.name,
+              images: item.image ? [item.image] : [],
+            },
+            unit_amount: Math.round(parseFloat(item.price) * 100),
+          },
+          quantity: 1,
+        }));
+
+        // Call your backend to create a Checkout Session
+        try {
+          const response = await fetch('https://your-backend-url.com/create-checkout-session', { // <-- CHANGE THIS TO YOUR BACKEND
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              customer: { name, email, address, phone },
+              line_items
+            })
+          });
+          const session = await response.json();
+          if (!session.url) throw new Error('No session URL returned');
+
+          // Save order to Firestore as "pending payment"
+          const orderDate = new Date();
+          const orderId = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+          await db.collection('orders').add({
+            orderId,
+            customer: { name, email, address, phone },
+            cart,
+            orderDate: orderDate.toISOString(),
+            status: 'pending_payment',
+            paymentType: 'Stripe'
+          });
+
+          // Optionally clear cart here or after payment success
+          localStorage.removeItem('cart');
+          renderCart();
+          updateCartCount();
+
+          // Redirect to Stripe Checkout
+          window.location.href = session.url;
+        } catch (err) {
+          Swal.fire('Payment Error', err.message, 'error');
+        }
+      });
+    });
   </script>
 </body>
 </html>

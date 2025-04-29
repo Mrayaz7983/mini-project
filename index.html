@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .cart-float {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #4c4cff;
+      color: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(76,76,255,0.15);
+      cursor: pointer;
+      z-index: 1000;
+      font-size: 1.6rem;
+      transition: background 0.2s;
+    }
+    .cart-float:hover {
+      background: #3737cc;
+    }
+    .cart-float #cart-count {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #fff;
+      color: #ff9d00;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 2px 7px;
+      min-width: 24px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    /* Ensure navbar cart badge is visible and styled */
+    .navbar .fa-cart-shopping {
+      position: relative;
+    }
+    .navbar #cart-count {
+      position: absolute;
+      top: -8px;
+      right: -16px;
+      background: #ff9d00;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 2px 6px;
+      min-width: 20px;
+      text-align: center;
+      z-index: 10;
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -36,7 +92,10 @@
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item d-lg-none"><a class="nav-link" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
         </ul>
-        <a href="addtocart.html" class="d-none d-lg-block ms-3"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative">
+          <i class="fa-solid fa-cart-shopping fa-lg"></i>
+          <span id="cart-count" class="position-absolute"></span>
+        </a>
       </div>
     </div>
   </nav>
@@ -59,22 +118,21 @@
       <div class="row g-4">
         <div class="col-md-3 col-6">
           <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
-            <img src="images/blush image.jpeg
-            " alt="Blush On">
+            <img src="images/blush image.jpeg" alt="Blush On">
             <div class="card-body">
               <h5 class="card-title">Blush On</h5>
               <p class="card-text">High-quality blush for a natural glow.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Blush On">Add to Cart</button>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Blush On" data-price="15" data-image="images/blush image.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
         <div class="col-md-3 col-6">
           <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
-            <img src="images/Concealer-2.jpeg">
+            <img src="images/Concealer-2.jpeg" alt="Concealer">
             <div class="card-body">
               <h5 class="card-title">Concealer</h5>
               <p class="card-text">Covers imperfections for flawless skin.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Concealer">Add to Cart</button>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Concealer" data-price="12" data-image="images/Concealer-2.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -84,7 +142,7 @@
             <div class="card-body">
               <h5 class="card-title">Foundation</h5>
               <p class="card-text">Smooth, long-lasting coverage.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Foundation">Add to Cart</button>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Foundation" data-price="18" data-image="images/Foundation.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -94,7 +152,7 @@
             <div class="card-body">
               <h5 class="card-title">Shirts</h5>
               <p class="card-text">Trendy and comfortable men's shirts.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Shirts">Add to Cart</button>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Shirts" data-price="25" data-image="images/shirts.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -195,7 +253,7 @@
   <!-- Floating Cart Icon -->
   <div class="cart-float" onclick="window.location.href='addtocart.html'">
     <i class="fa-solid fa-cart-shopping"></i>
-    <span id="cart-count" style="position:absolute;top:8px;right:8px;background:#fff;color:#ff9d00;font-size:0.9rem;font-weight:700;border-radius:50%;padding:2px 7px;">0</span>
+    <span id="cart-count">0</span>
   </div>
 
   <!-- Footer -->
@@ -235,15 +293,38 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Example: Add to cart button interaction
-    let cartCount = 0;
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        cartCount++;
-        document.getElementById('cart-count').textContent = cartCount;
-        btn.textContent = "Added!";
-        setTimeout(() => btn.textContent = "Add to Cart", 1200);
+    // --- Cart Logic for All Pages ---
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      // Update all cart-count spans (navbar and floating icon)
+      document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
+    }
+
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    // Attach event listeners to all add-to-cart buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productName = btn.getAttribute('data-product');
+          const productPrice = btn.getAttribute('data-price');
+          const productImage = btn.getAttribute('data-image');
+          addToCart({ name: productName, price: productPrice, image: productImage });
+          btn.textContent = "Added!";
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = "Add to Cart";
+            btn.disabled = false;
+          }, 1200);
+        });
       });
     });
   </script>
 </body>
+</html>
