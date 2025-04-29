@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GlobalLLC - Home</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="images/logo.jpeg" alt="GlobalLLC Logo" style="height:48px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item" href="products.html#beauty">Beauty</a></li>
+              <li><a class="dropdown-item" href="products.html#kitchen-appliances">Kitchen Appliances</a></li>
+              <li><a class="dropdown-item" href="products.html#man-wears">Man Wears</a></li>
+              <li><a class="dropdown-item" href="products.html#electronics">Electronics</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+        </ul>
+        <a href="addtocart.html" class="d-none d-lg-block ms-3"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" data-aos="fade-up">
+    <div class="container">
+      <h1>Welcome to Global Scaleup LLC</h1>
+      <p>Your one-stop shop for beauty, kitchen, and tech essentials. Discover quality products and fast shipping!</p>
+      <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+      <br>
+      <img src="images/banner3.png" alt="Hero Banner" class="img-fluid hero-banner" data-aos="zoom-in" data-aos-delay="200">
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Featured Products</h2>
+      <div class="row g-4">
+        <div class="col-md-3 col-6">
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+            <img src="images/blush image.jpeg
+            " alt="Blush On">
+            <div class="card-body">
+              <h5 class="card-title">Blush On</h5>
+              <p class="card-text">High-quality blush for a natural glow.</p>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Blush On">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+            <img src="images/Concealer-2.jpeg">
+            <div class="card-body">
+              <h5 class="card-title">Concealer</h5>
+              <p class="card-text">Covers imperfections for flawless skin.</p>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Concealer">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
+            <img src="images/Foundation.jpeg" alt="Foundation">
+            <div class="card-body">
+              <h5 class="card-title">Foundation</h5>
+              <p class="card-text">Smooth, long-lasting coverage.</p>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Foundation">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
+            <img src="images/shirts.jpeg" alt="Shirts">
+            <div class="card-body">
+              <h5 class="card-title">Shirts</h5>
+              <p class="card-text">Trendy and comfortable men's shirts.</p>
+              <button class="btn btn-primary add-to-cart-btn" data-product="Shirts">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="service-card" data-aos="fade-right" data-aos-delay="100">
+            <h3><i class="fa-solid fa-paint-brush"></i> Product Customization</h3>
+            <p>We offer personalized customization for select products.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <h3><i class="fa-solid fa-truck-fast"></i> Fast Shipping</h3>
+            <p>Get your products delivered in record time with our express shipping.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card" data-aos="fade-left" data-aos-delay="300">
+            <h3><i class="fa-solid fa-headset"></i> 24/7 Support</h3>
+            <p>Our customer support is available round the clock to assist you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section" data-aos="fade-up">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="testimonial-card">
+                  <p>"The products are top quality, and I love the fast delivery!"</p>
+                  <h5>- Sarah, Happy Customer</h5>
+                </div>
+              </div>
+              <div class="col-md-4 d-none d-md-block">
+                <div class="testimonial-card">
+                  <p>"Amazing experience with Global Scaleup LLC."</p>
+                  <h5>- John, Loyal Customer</h5>
+                </div>
+              </div>
+              <div class="col-md-4 d-none d-md-block">
+                <div class="testimonial-card">
+                  <p>"Fast shipping, friendly service, and high-quality product."</p>
+                  <h5>- Emma, Satisfied Buyer</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="testimonial-card">
+                  <p>"Excellent quality and timely support. Will buy again!"</p>
+                  <h5>- Alex, Returning Customer</h5>
+                </div>
+              </div>
+              <div class="col-md-4 d-none d-md-block">
+                <div class="testimonial-card">
+                  <p>"Absolutely loved it. Great experience from start to finish!"</p>
+                  <h5>- Nina, Satisfied Buyer</h5>
+                </div>
+              </div>
+              <div class="col-md-4 d-none d-md-block">
+                <div class="testimonial-card">
+                  <p>"This is the best online service I’ve used in a while!"</p>
+                  <h5>- Adam, Happy Client</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Cart Icon -->
+  <div class="cart-float" onclick="window.location.href='addtocart.html'">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-count" style="position:absolute;top:8px;right:8px;background:#fff;color:#ff9d00;font-size:0.9rem;font-weight:700;border-radius:50%;padding:2px 7px;">0</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="footer-title">About Global Scaleup LLC</div>
+          <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-title">Quick Links</div>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-title">Contact</div>
+          <ul class="list-unstyled">
+            <li><a href="https://www.globalscaleupllc.com" target="_blank"><i class="fas fa-globe"></i> www.globalscaleupllc.com</a></li>
+            <li><a href="mailto:support@globalscaleupllc.com"><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a></li>
+            <li><a href="tel:+17372831916"><i class="fas fa-phone"></i> +1737-283-1916</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="mb-0">&copy; 2025 Global Scaleup LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Example: Add to cart button interaction
+    let cartCount = 0;
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        cartCount++;
+        document.getElementById('cart-count').textContent = cartCount;
+        btn.textContent = "Added!";
+        setTimeout(() => btn.textContent = "Add to Cart", 1200);
+      });
+    });
+  </script>
+</body>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add to Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background: #ecf5ff;
+      overflow-x: hidden;
+      font-family: "Poppins", sans-serif;
+    }
+    .navbar {
+      background-color: white;
+    }
+    .navbar-brand img {
+      height: 48px;
+    }
+    .dropdown-menu {
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .fa-cart-shopping {
+      position: relative;
+    }
+    .container.cart-main {
+      display: flex;
+      padding: 30px;
+      gap: 20px;
+      flex-wrap: wrap;
+      animation: fadeIn 0.8s ease-in-out;
+      max-width: 1200px;
+    }
+    #root {
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .box {
+      background: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .img-box {
+      text-align: center;
+    }
+    .images {
+      max-width: 100%;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .bottom {
+      margin-top: 15px;
+      text-align: center;
+    }
+    .bottom p {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .bottom h2 {
+      color: #4c4cff;
+      font-size: 18px;
+    }
+    .bottom button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #4c4cff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .bottom button:hover {
+      background: #3737cc;
+    }
+    .sidebar {
+      flex: 1;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      min-width: 280px;
+      height: fit-content;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    .head {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    #cartItem {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 10px;
+    }
+    .row-img {
+      flex: 0 0 50px;
+    }
+    .rowimg {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .cart-item p {
+      flex: 1;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+    .cart-item h2 {
+      font-size: 14px;
+      margin: 0 10px;
+    }
+    .fa-trash {
+      color: red;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .fa-trash:hover {
+      transform: scale(1.2);
+    }
+    .foot {
+      text-align: center;
+      margin-top: 20px;
+      border-top: 2px solid #ccc;
+      padding-top: 15px;
+      color: rgb(0, 0, 0);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .foot p {
+      margin: 0;
+      font-size: 14px;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 900px) {
+      .container.cart-main {
+        flex-direction: column;
+        padding: 15px;
+      }
+      .sidebar {
+        margin-top: 30px;
+      }
+    }
+    @media (max-width: 480px) {
+      .images {
+        height: 120px;
+      }
+      .rowimg {
+        width: 40px;
+        height: 40px;
+      }
+      .container.cart-main {
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Bootstrap Navbar (consistent with other pages) -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="images/logo.jpeg" alt="GlobalLLC Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="products.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item" href="products.html#beauty">Beauty</a></li>
+              <li><a class="dropdown-item" href="products.html#kitchen-appliances">Kitchen Appliances</a></li>
+              <li><a class="dropdown-item" href="products.html#man-wears">Man Wears</a></li>
+              <li><a class="dropdown-item" href="products.html#electronics">Electronics</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link active" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+        </ul>
+        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative">
+          <i class="fa-solid fa-cart-shopping fa-lg"></i>
+          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container cart-main">
+    <div id="root"></div>
+    <div class="sidebar">
+      <div class="head">My Cart</div>
+      <div id="cartItem">Your cart is empty</div>
+      <div class="foot">
+        <h3>Total</h3>
+        <h2 id="total">$ 0.00</h2>
+      </div>
+    </div>
+  </div>
+  <footer class="foot">
+    <p>&copy; 2025 GlobalLLC. All Rights Reserved.</p>
+  </footer>
+  <!-- SweetAlert2 and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Product data with local images
+    const product = [
+      { id: 0, image: 'image/gg-1.jpg', title: 'Z Flip Foldable Mobile', price: 120 },
+      { id: 1, image: 'image/hh-2.jpg', title: 'Air Pods Pro', price: 60 },
+      { id: 2, image: 'image/ee-3.jpg', title: '250D DSLR Camera', price: 230 },
+      { id: 3, image: 'image/aa-1.jpg', title: 'Head Phones', price: 100 }
+    ];
+
+    // Render products
+    document.getElementById('root').innerHTML = product.map((item, i) => {
+      return `
+        <div class='box'>
+          <div class='img-box'>
+            <img class='images' src="${item.image}" alt="${item.title}">
+          </div>
+          <div class='bottom'>
+            <p>${item.title}</p>
+            <h2>$ ${item.price}.00</h2>
+            <button onclick="addToCart('${item.title}', ${item.price}, '${item.image}')">Add to cart</button>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Cart logic
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
+    }
+
+    function addToCart(title, price, image) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ title, price, image });
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart',
+        text: `${title} has been added to your cart.`,
+        showConfirmButton: false,
+        timer: 1200
+      });
+
+      updateCartCount();
+      displayCart();
+    }
+
+    function delElement(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+      updateCartCount();
+    }
+
+    function displayCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let total = 0;
+      updateCartCount();
+
+      if (cart.length === 0) {
+        document.getElementById("cartItem").innerHTML = "Your cart is empty";
+        document.getElementById("total").innerHTML = "$ 0.00";
+        return;
+      }
+
+      document.getElementById("cartItem").innerHTML = cart.map((item, index) => {
+        total += item.price;
+        return `
+          <div class='cart-item'>
+            <div class='row-img'>
+              <img class='rowimg' src="${item.image}" alt="${item.title}">
+            </div>
+            <p>${item.title}</p>
+            <h2>$ ${item.price.toFixed(2)}</h2>
+            <i class='fa-solid fa-trash' onclick='delElement(${index})'></i>
+          </div>`;
+      }).join('');
+
+      document.getElementById("total").innerHTML = "$ " + total.toFixed(2);
+    }
+
+    // On page load
+    window.onload = function() {
+      updateCartCount();
+      displayCart();
+    };
+  </script>
+</body>
+</html>
