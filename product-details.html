@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Global Scaleup LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #E0F2FE 0%, #FFFFFF 100%);
+      color: #1F2937;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+    .navbar-brand img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    .nav-link {
+      color: #1E40AF !important;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #60A5FA !important;
+      transform: translateY(-2px);
+    }
+    .product-section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+    .product-section-title::after {
+      content: "";
+      display: block;
+      margin: 1rem auto 0;
+      width: 100px;
+      height: 6px;
+      border-radius: 3px;
+      background: #60A5FA;
+    }
+    .product-details {
+      margin-top: 2rem;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      padding: 1.5rem;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border: 2px solid #60A5FA;
+    }
+    .product-image {
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      width: 100%;
+    }
+    .product-card:hover .product-image {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+    .product-name {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 0.8rem;
+    }
+    .product-price {
+      font-size: 1.5rem;
+      color: #1E40AF;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .product-description {
+      font-size: 1.1rem;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #60A5FA 0%, #1E40AF 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .btn-secondary {
+      background: linear-gradient(90deg, #111827 0%, #374151 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: linear-gradient(90deg, #60A5FA 0%, #1E40AF 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .back-button-container {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .btn-back {
+      font-size: 1rem;
+    }
+    #cart-count {
+      background: #1E40AF !important;
+      color: #ffffff !important;
+      font-size: 1rem !important;
+      min-width: 24px !important;
+      min-height: 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      left: 70% !important;
+      top: 10% !important;
+      transform: translate(-50%, 0) !important;
+      padding: 0 6px !important;
+      font-weight: 700 !important;
+      border-radius: 50% !important;
+      border: 3px solid #ffffff !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+      animation: bounce 1.5s infinite;
+    }
+    .fa-cart-shopping {
+      font-size: 2.2rem !important;
+      color: #1E40AF !important;
+      line-height: 52px !important;
+      text-align: center !important;
+      width: 52px !important;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .fa-cart-shopping:hover {
+      color: #60A5FA !important;
+      transform: scale(1.2);
+    }
+    .footer {
+      background: #ffffff;
+      padding: 4rem 0;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1E40AF;
+      margin-bottom: 1.2rem;
+    }
+    .footer a {
+      color: #1F2937;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .footer a:hover {
+      color: #60A5FA;
+      transform: translateX(5px);
+    }
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #1E40AF, #60A5FA);
+      color: #ffffff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+    @media (max-width: 768px) {
+      .product-section-title {
+        font-size: 2.2rem;
+      }
+      .product-name {
+        font-size: 1.5rem;
+      }
+      .product-price {
+        font-size: 1.3rem;
+      }
+      .product-description {
+        font-size: 1rem;
+      }
+      .product-image {
+        max-height: 300px;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+      }
+      .navbar-brand img {
+        height: 42px !important;
+      }
+    }
+    @media (max-width: 576px) {
+      .product-section-title {
+        font-size: 1.8rem;
+      }
+      .product-image {
+        max-height: 250px;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .scroll-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/logo..png" alt="GlobalLLC Logo" style="height:48px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+        </ul>
+        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative" style="display: inline-block; width: 52px; height: 52px;">
+          <span style="position: relative; display: inline-block; width: 52px; height: 52px;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="position-absolute badge rounded-pill">0</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Details Section -->
+  <section class="container my-5" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="product-section-title" id="product-title">Product Details</h2>
+    <div class="row product-details">
+      <div class="col-md-6 mb-4">
+        <div class="product-card h-100">
+          <img id="product-image" src="" class="product-image" alt="Product Image">
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="product-card h-100">
+          <h3 class="product-name" id="product-name">Product Name</h3>
+          <p class="product-price" id="product-price">$0.00</p>
+          <p class="product-description" id="product-description">
+            This is a high-quality product designed to meet your needs. It features premium materials and advanced technology to ensure durability and performance. Perfect for everyday use, this product offers exceptional value and style.
+          </p>
+          <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="back-button-container">
+      <a href="products.html" class="btn btn-secondary btn-back">Back to Products</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="footer-title">About Global Scaleup LLC</div>
+          <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-title">Quick Links</div>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <div class="footer-title">Contact</div>
+          <ul class="list-unstyled">
+            <li><a href="https://www.globalscaleupllc.com" target="_blank"><i class="fas fa-globe"></i> www.globalscaleupllc.com</a></li>
+            <li><a href="mailto:support@globalscaleupllc.com"><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a></li>
+            <li><a href="tel:+17372831916"><i class="fas fa-phone"></i> +1737-283-1916</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="mb-0 text-center">© 2025 Global Scaleup LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Sample product data (replace with actual data source in production)
+    const products = [
+      { title: "Foundation", price: 12.99, image: "images/Foundation.jpeg", description: "A lightweight foundation for a natural, flawless finish." },
+      { title: "Lipstick", price: 6.99, image: "images/Lipstick.jpeg", description: "Vibrant, long-lasting lipstick in various shades." },
+      { title: "Concealer", price: 10.99, image: "images/Concealer.jpeg", description: "High-coverage concealer for blemishes and dark circles." },
+      { title: "Face Powder", price: 13.99, image: "images/Facepowder.jpeg", description: "Matte finish face powder for all-day shine control." },
+      { title: "Moisturizer Lotion", price: 12.99, image: "images/lotions.png", description: "Hydrating lotion for soft and smooth skin." },
+      { title: "Night Cream", price: 7.99, image: "images/NightCReam.jpeg", description: "Nourishing night cream for overnight skin repair." },
+      { title: "Blush On", price: 15.00, image: "images/blush image.jpeg", description: "High-quality blush for a natural glow." },
+      { title: "Mascara", price: 6.99, image: "images/Mascara.jpeg", description: "Volumizing mascara for bold, defined lashes." },
+      { title: "Hand Mixer", price: 140.00, image: "images/handmixerr img.jpg", description: "Powerful hand mixer for effortless baking." },
+      { title: "Knife Set", price: 34.00, image: "images/KnifeSet.jpeg", description: "Precision knife set for all your kitchen needs." },
+      { title: "Juicer Blender", price: 299.00, image: "images/JuicerBlender.jpeg", description: "Versatile juicer and blender for healthy drinks." },
+      { title: "Oven", price: 300.00, image: "images/microwave oven image.jpg", description: "Modern oven for baking and roasting." },
+      { title: "Plates Set", price: 40.00, image: "images/plate set image.jpg", description: "Elegant plate set for dining." },
+      { title: "Toaster", price: 200.49, image: "images/toaster.jpeg", description: "Sleek toaster for perfect breakfasts." },
+      { title: "Coffee Maker", price: 150.40, image: "images/cofee maker image.jfif", description: "Automatic coffee maker for rich brews." },
+      { title: "Rice Cooker", price: 189.99, image: "images/Rice kokar image.avif", description: "Smart rice cooker for perfect rice every time." },
+      { title: "Men's Denim Jacket", price: 39.99, image: "images/jacket image.jpg", description: "Stylish denim jacket for casual wear." },
+      { title: "Casual Cotton Shirt", price: 24.99, image: "images/cotton shirt image.jfif", description: "Comfortable cotton shirt for everyday style." },
+      { title: "Shirts", price: 25.00, image: "images/shirts.jpeg", description: "Trendy and comfortable men's shirts." },
+      { title: "Regular Fit Jeans", price: 30.00, image: "images/regular jeans image.webp", description: "Classic regular fit jeans for all occasions." },
+      { title: "Casual Sneakers", price: 50.00, image: "images/sneaker image.jfif", description: "Comfortable sneakers for daily wear." },
+      { title: "Stylish Wrist Watch", price: 170.99, image: "images/wrist watch image.jpg", description: "Elegant wrist watch with modern design." },
+      { title: "Winter Hoodie", price: 34.99, image: "images/hoodie image.jpg", description: "Warm and cozy hoodie for winter." },
+      { title: "Baseball Cap", price: 9.99, image: "images/baseball cap image.jpg", description: "Casual baseball cap for sporty looks." },
+      { title: "Microwave Oven", price: 250.00, image: "images/microwave oven image.jpg", description: "Advanced microwave oven for quick meals." },
+      { title: "Electric Kettle", price: 150.00, image: "images/electric kettle image.jpg", description: "Fast-boiling electric kettle." },
+      { title: "Blender Machine", price: 150.79, image: "images/blender matchine image.webp", description: "High-performance blender for smoothies." },
+      { title: "Electric Iron", price: 120.00, image: "images/electric iron image.webp", description: "Efficient electric iron for crisp clothes." },
+      { title: "32'' LED TV", price: 370.00, image: "images/LED Image.jfif", description: "High-definition 32-inch LED TV." },
+      { title: "Wireless Headphones", price: 49.99, image: "images/headphones.png", description: "Premium wireless headphones with noise cancellation." },
+      { title: "Mini Air Cooler", price: 409.89, image: "images/aircooler.webp", description: "Portable air cooler for instant cooling." }
+    ];
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
+    }
+
+    function addToCart(title, price, image) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ title, price, image });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart',
+        text: `${title} has been added to your cart.`,
+        showConfirmButton: false,
+        timer: 1200
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartCount();
+      const urlParams = new URLSearchParams(window.location.search);
+      const productTitle = urlParams.get('title');
+      const product = products.find(p => p.title === productTitle);
+
+      if (product) {
+        document.getElementById('product-title').textContent = product.title;
+        document.getElementById('product-name').textContent = product.title;
+        document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
+        document.getElementById('product-image').src = product.image;
+        document.getElementById('product-description').textContent = product.description;
+      } else {
+        document.querySelector('.product-details').innerHTML = '<p class="text-danger">Product not found.</p>';
+      }
+
+      document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+        if (product) {
+          addToCart(product.title, product.price, product.image);
+        }
+      });
+
+      // Scroll to Top Button Visibility
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

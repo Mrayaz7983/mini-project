@@ -1,330 +1,1857 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GlobalLLC - Home</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .cart-float {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      background: #4c4cff;
-      color: #fff;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(76,76,255,0.15);
-      cursor: pointer;
-      z-index: 1000;
-      font-size: 1.6rem;
-      transition: background 0.2s;
-    }
-    .cart-float:hover {
-      background: #3737cc;
-    }
-    .cart-float #cart-count {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: #fff;
-      color: #ff9d00;
-      font-size: 0.9rem;
-      font-weight: 700;
-      border-radius: 50%;
-      padding: 2px 7px;
-      min-width: 24px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    /* Ensure navbar cart badge is visible and styled */
-    .navbar .fa-cart-shopping {
-      position: relative;
-    }
-    .navbar #cart-count {
-      position: absolute;
-      top: -8px;
-      right: -16px;
-      background: #ff9d00;
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border-radius: 50%;
-      padding: 2px 6px;
-      min-width: 20px;
-      text-align: center;
-      z-index: 10;
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="#"><img src="images/logo.jpeg" alt="GlobalLLC Logo" style="height:48px;"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Products
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-              <li><a class="dropdown-item" href="products.html#beauty">Beauty</a></li>
-              <li><a class="dropdown-item" href="products.html#kitchen-appliances">Kitchen Appliances</a></li>
-              <li><a class="dropdown-item" href="products.html#man-wears">Man Wears</a></li>
-              <li><a class="dropdown-item" href="products.html#electronics">Electronics</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlobalLLC - Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+        color: #1f2937;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      .navbar {
+        background: #ffffff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        padding: 0.75rem 0;
+      }
+      .navbar-brand img {
+        transition: transform 0.3s ease, filter 0.3s ease;
+        max-height: 48px;
+      }
+      .navbar-brand img:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+      }
+      .nav-link {
+        color: #1e40af !important;
+        font-weight: 600;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #60a5fa !important;
+        transform: translateY(-2px);
+      }
+      .dropdown-menu {
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        min-width: 180px;
+      }
+      .dropdown-item {
+        color: #1f2937;
+        font-size: 0.95rem;
+        transition: color 0.3s ease, background 0.3s ease;
+      }
+      .dropdown-item:hover {
+        color: #60a5fa;
+        background: #f1f5f9;
+      }
+      #cart-count {
+        background: #1e40af !important;
+        color: #ffffff !important;
+        font-size: clamp(0.8rem, 2vw, 0.9rem) !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        left: 70% !important;
+        top: 10% !important;
+        transform: translate(-50%, 0) !important;
+        padding: 0 5px !important;
+        font-weight: 700 !important;
+        border-radius: 50% !important;
+        border: 2px solid #ffffff !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        animation: bounce 1.5s infinite;
+      }
+      .fa-cart-shopping {
+        font-size: clamp(1.8rem, 4vw, 2rem) !important;
+        color: #1e40af !important;
+        line-height: 48px !important;
+        text-align: center !important;
+        width: 48px !important;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      .fa-cart-shopping:hover {
+        color: #60a5fa !important;
+        transform: scale(1.2);
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translate(-50%, 0);
+        }
+        40% {
+          transform: translate(-50%, -8px);
+        }
+        60% {
+          transform: translate(-50%, -4px);
+        }
+      }
+      .hero-section {
+        background: linear-gradient(
+            rgba(30, 64, 175, 0.7),
+            rgba(96, 165, 250, 0.7)
+          ),
+          url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop")
+            center/cover no-repeat;
+        color: #ffffff;
+        padding: clamp(60px, 10vw, 100px) 20px;
+        text-align: center;
+        border-radius: 15px;
+        margin: clamp(20px, 5vw, 40px) auto;
+        max-width: 1200px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      }
+      .hero-section h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .hero-section p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+        opacity: 0.9;
+      }
+      .hero-banner {
+        max-width: 100%;
+        border-radius: 15px;
+        margin-top: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+      .hero-section:hover .hero-banner {
+        transform: scale(1.02);
+      }
+      .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        background: linear-gradient(90deg, #1e40af 0%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        position: relative;
+        animation: gradientShift 3s ease infinite;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        margin: 0.75rem auto 0;
+        width: clamp(80px, 10vw, 100px);
+        height: 6px;
+        border-radius: 3px;
+        background: #60a5fa;
+      }
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #1e40af 0%, #60a5fa 100%);
+        border: none;
+        border-radius: 30px;
+        padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 600;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(90deg, #60a5fa 0%, #1e40af 100%);
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .btn-primary::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.4s ease, height 0.4s ease;
+      }
+      .btn-primary:active::after {
+        width: 200px;
+        height: 200px;
+      }
+      .btn-secondary {
+        background: #ffffff;
+        border: 2px solid #60a5fa;
+        border-radius: 30px;
+        padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 600;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        color: #1e40af;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      .btn-secondary:hover {
+        background: #60a5fa;
+        color: #ffffff;
+      }
+      .btn-quick-view {
+        background: transparent;
+        border: 2px solid #60a5fa;
+        border-radius: 30px;
+        padding: clamp(0.5rem, 1.2vw, 0.6rem) clamp(1rem, 2vw, 1.5rem);
+        font-weight: 600;
+        font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+        color: #60a5fa;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      .btn-quick-view:hover {
+        background: #60a5fa;
+        color: #ffffff;
+      }
+      .products-section,
+      .services-section,
+      .testimonials-section,
+      .categories-section,
+      .why-us-section,
+      .promo-section,
+      .blog-section {
+        max-width: 1200px;
+        margin: clamp(20px, 5vw, 40px) auto;
+        padding: clamp(1.5rem, 3vw, 2rem);
+      }
+      .category-card {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .category-card img {
+        width: 100%;
+        height: clamp(120px, 25vw, 200px);
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .category-card:hover img {
+        transform: scale(1.1);
+      }
+      .category-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(30, 64, 175, 0.7),
+          rgba(96, 165, 250, 0.7)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .category-card:hover .category-overlay {
+        opacity: 1;
+      }
+      .category-overlay h4 {
+        color: #ffffff;
+        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .product-card {
+        background: #ffffff;
+        border-radius: 15px;
+        border: 2px solid transparent;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
+          background 0.3s ease;
+        padding: clamp(1rem, 2vw, 1.5rem);
+        text-align: center;
+        position: relative;
+        perspective: 1000px;
+        display: flex;
+        flex-direction: column;
+        height: clamp(360px, 50vw, 450px);
+        justify-content: space-between;
+        overflow: hidden;
+      }
+      .product-card:hover {
+        transform: translateY(-10px) rotateY(5deg);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        border: 2px solid #60a5fa;
+        background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+      }
+      .product-card img {
+        max-width: 100%;
+        height: clamp(120px, 20vw, 180px);
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      .product-card:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .product-card .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: clamp(120px, 20vw, 180px);
+        background: linear-gradient(
+          180deg,
+          rgba(30, 64, 175, 0.2),
+          rgba(96, 165, 250, 0.2)
+        );
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+      }
+      .product-card:hover .image-overlay {
+        opacity: 1;
+      }
+      .product-card .feature-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        font-weight: 600;
+        background: rgba(30, 64, 175, 0.8);
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+      }
+      .product-card:hover .feature-overlay {
+        opacity: 1;
+      }
+      .product-card h5 {
+        color: #1e40af;
+        font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .product-card .tagline {
+        color: #1f2937;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        font-style: italic;
+        margin-bottom: 0.5rem;
+      }
+      .product-card p {
+        color: #1f2937;
+        font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+        margin-bottom: 0.5rem;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .product-price {
+        color: #60a5fa;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+      .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+        font-weight: 600;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        z-index: 3;
+        color: #ffffff;
+      }
+      .product-badge.new {
+        background: #1e40af;
+      }
+      .product-badge.trending {
+        background: #10b981;
+      }
+      .product-badge.best-seller {
+        background: #ef4444;
+      }
+      .view-details {
+        display: inline-block;
+        color: #60a5fa;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        text-decoration: none;
+        margin-top: 0.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .product-card:hover .view-details {
+        opacity: 1;
+      }
+      .product-card .btn-container {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-top: auto;
+        flex-wrap: wrap;
+      }
+      .feature-box {
+        background: #ffffff;
+        padding: clamp(15px, 3vw, 25px);
+        border-radius: 20px;
+        border: 2px solid transparent;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
+          background 0.3s ease;
+        text-align: center;
+        min-height: 200px;
+      }
+      .feature-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border: 2px solid #60a5fa;
+        background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+      }
+      .feature-box i {
+        color: #60a5fa;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        margin-bottom: 15px;
+      }
+      .feature-box h4 {
+        color: #1e40af;
+        font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .feature-box p {
+        color: #1f2937;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        line-height: 1.6;
+      }
+      .service-card,
+      .testimonial-card {
+        background: #ffffff;
+        border-radius: 15px;
+        border: 2px solid transparent;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        padding: clamp(1rem, 2vw, 1.5rem);
+        text-align: center;
+        min-height: 220px;
+      }
+      .service-card:hover,
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        border: 2px solid #60a5fa;
+      }
+      .service-card h3 {
+        color: #1e40af;
+        font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .service-card i {
+        color: #1e40af;
+        font-size: clamp(1.8rem, 3vw, 2rem);
+        margin-bottom: 1rem;
+      }
+      .service-card p {
+        color: #1f2937;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+      }
+      .testimonial-card img {
+        width: clamp(50px, 10vw, 60px);
+        height: clamp(50px, 10vw, 60px);
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+      .testimonial-card p {
+        color: #1f2937;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+      .testimonial-card h5 {
+        color: #1e40af;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-weight: 600;
+      }
+      .testimonial-card .stars {
+        color: #ffd700;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        margin-bottom: 1rem;
+      }
+      .promo-section {
+        background: linear-gradient(
+            rgba(30, 64, 175, 0.7),
+            rgba(96, 165, 250, 0.7)
+          ),
+          url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop")
+            center/cover no-repeat;
+        color: #ffffff;
+        padding: clamp(50px, 10vw, 80px) 20px;
+        text-align: center;
+        border-radius: 15px;
+        margin: clamp(20px, 5vw, 40px) auto;
+        max-width: 1200px;
+      }
+      .promo-section h2 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .promo-section p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+      }
+      .blog-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        min-height: 350px;
+      }
+      .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .blog-card img {
+        width: 100%;
+        height: clamp(150px, 25vw, 200px);
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .blog-card:hover img {
+        transform: scale(1.1);
+      }
+      .blog-card .card-body {
+        padding: clamp(1rem, 2vw, 1.5rem);
+      }
+      .blog-card h5 {
+        color: #1e40af;
+        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .blog-card p {
+        color: #1f2937;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        margin-bottom: 1rem;
+      }
+      .blog-card a {
+        color: #60a5fa;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+      }
+      .blog-card a:hover {
+        text-decoration: underline;
+      }
+      .carousel-control-prev,
+      .carousel-control-next {
+        background: #1e40af;
+        width: clamp(30px, 5vw, 40px);
+        height: clamp(30px, 5vw, 40px);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background 0.3s ease;
+      }
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        background: #60a5fa;
+      }
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-size: 50%;
+      }
+      .cart-float {
+        position: fixed;
+        bottom: clamp(80px, 10vw, 100px);
+        right: clamp(20px, 3vw, 30px);
+        background: linear-gradient(45deg, #1e40af, #60a5fa);
+        color: #ffffff;
+        border-radius: 50%;
+        width: clamp(50px, 8vw, 56px);
+        height: clamp(50px, 8vw, 56px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        z-index: 1000;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .cart-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+      .cart-float #cart-count {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #ffffff;
+        color: #1e40af;
+        font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+        font-weight: 700;
+        border-radius: 50%;
+        padding: 2px 6px;
+        min-width: 18px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        border: 2px solid #1e40af;
+      }
+      .cart-float.added {
+        animation: shake 0.5s ease;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .newsletter-form {
+        max-width: clamp(300px, 80vw, 500px);
+        margin: 1.5rem auto;
+      }
+      .newsletter-form input {
+        border-radius: 30px 0 0 30px;
+        border: 2px solid #60a5fa;
+        padding: clamp(0.6rem, 1.5vw, 0.8rem);
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+      }
+      .newsletter-form button {
+        border-radius: 0 30px 30px 0;
+        padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+      }
+      .footer {
+        background: #ffffff;
+        padding: clamp(2rem, 5vw, 4rem) 0;
+        box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .footer-title {
+        font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+        font-weight: 600;
+        color: #1e40af;
+        margin-bottom: 1rem;
+      }
+      .footer a {
+        color: #1f2937;
+        text-decoration: none;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      .footer a:hover {
+        color: #60a5fa;
+        transform: translateX(5px);
+      }
+      .scroll-to-top {
+        position: fixed;
+        bottom: clamp(20px, 5vw, 30px);
+        right: clamp(20px, 3vw, 30px);
+        background: linear-gradient(45deg, #1e40af, #60a5fa);
+        color: #ffffff;
+        width: clamp(50px, 8vw, 60px);
+        height: clamp(50px, 8vw, 60px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: clamp(1.5rem, 3vw, 1.8rem);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+      }
+      .scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .scroll-to-top:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      /* Base responsive reset */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Extra small screens (max 400px) */
+      @media (max-width: 400px) {
+        .hero-section {
+          padding: 40px 10px;
+          margin: 15px;
+        }
+        .hero-section h1 {
+          font-size: 1.8rem;
+        }
+        .hero-section p {
+          font-size: 0.9rem;
+        }
+        .section-title {
+          font-size: 1.6rem;
+        }
+        .product-card,
+        .service-card,
+        .testimonial-card,
+        .feature-box,
+        .blog-card {
+          padding: 0.8rem;
+          min-height: 320px;
+        }
+        .product-card img,
+        .category-card img,
+        .blog-card img {
+          height: 100px;
+        }
+        .product-card h5,
+        .service-card h3,
+        .feature-box h4,
+        .blog-card h5 {
+          font-size: 1.2rem;
+        }
+        .product-card p,
+        .service-card p,
+        .testimonial-card p,
+        .feature-box p,
+        .blog-card p {
+          font-size: 0.85rem;
+        }
+        .product-price {
+          font-size: 1rem;
+        }
+        .btn-primary,
+        .btn-secondary,
+        .btn-quick-view {
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+        }
+        .product-card .btn-container {
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+          width: 25px;
+          height: 25px;
+        }
+        .newsletter-form {
+          max-width: 90%;
+        }
+        .cart-float,
+        .scroll-to-top {
+          width: 45px;
+          height: 45px;
+          bottom: 15px;
+          right: 15px;
+        }
+        .cart-float #cart-count {
+          font-size: 0.7rem;
+          min-width: 16px;
+          padding: 1px 5px;
+        }
+      }
+
+      /* Small devices (max 576px) */
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 50px 15px;
+          margin: 20px;
+        }
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+        .section-title {
+          font-size: 1.8rem;
+        }
+        .product-card,
+        .service-card,
+        .testimonial-card,
+        .feature-box,
+        .blog-card {
+          padding: 1rem;
+          height: 360px;
+        }
+        .product-card img,
+        .category-card img,
+        .blog-card img {
+          height: 120px;
+        }
+        .product-card h5,
+        .service-card h3,
+        .feature-box h4,
+        .blog-card h5 {
+          font-size: 1.3rem;
+        }
+        .product-card p,
+        .service-card p,
+        .testimonial-card p,
+        .feature-box p,
+        .blog-card p {
+          font-size: 0.9rem;
+        }
+        .product-price {
+          font-size: 1.1rem;
+        }
+        .category-overlay h4 {
+          font-size: 1.2rem;
+        }
+        .promo-section h2 {
+          font-size: 1.8rem;
+        }
+        .promo-section p {
+          font-size: 1rem;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+          width: 30px;
+          height: 30px;
+        }
+        .cart-float,
+        .scroll-to-top {
+          bottom: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+        }
+        .cart-float #cart-count {
+          font-size: 0.8rem;
+          min-width: 18px;
+        }
+      }
+
+      /* Tablets (max 768px) */
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+        .hero-section p {
+          font-size: 1.1rem;
+        }
+        .section-title {
+          font-size: 2.2rem;
+        }
+        .product-card h5,
+        .service-card h3,
+        .feature-box h4,
+        .blog-card h5 {
+          font-size: 1.4rem;
+        }
+        .product-card p,
+        .service-card p,
+        .testimonial-card p,
+        .feature-box p,
+        .blog-card p {
+          font-size: 0.9rem;
+        }
+        .product-price {
+          font-size: 1.2rem;
+        }
+        .category-card img,
+        .blog-card img {
+          height: 150px;
+        }
+        .category-overlay h4 {
+          font-size: 1.4rem;
+        }
+        .promo-section h2 {
+          font-size: 2.2rem;
+        }
+        .promo-section p {
+          font-size: 1.1rem;
+        }
+        .product-card {
+          height: 400px;
+          padding: 1.2rem;
+        }
+        .product-card img {
+          height: 150px;
+        }
+        .product-card .btn-container {
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+      }
+
+      /* Large screens (min-width: 1200px) */
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px;
+        }
+        .hero-section {
+          padding: 120px 30px;
+        }
+        .hero-section h1 {
+          font-size: 4rem;
+        }
+        .section-title {
+          font-size: 3rem;
+        }
+        .product-card {
+          height: 480px;
+        }
+        .product-card img {
+          height: 200px;
+        }
+        .category-card img,
+        .blog-card img {
+          height: 220px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><img src="images/logo..png" alt="GlobalLLC Logo" loading="lazy"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="products.html"
+                id="productsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Products</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li>
+                  <a class="dropdown-item" href="products.html#beauty"
+                    >Beauty</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="products.html#kitchen-appliances"
+                    >Kitchen Appliances</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#man-wears"
+                    >Man Wears</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#electronics"
+                    >Electronics</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="addtocart.html"
+                ><i class="fa-solid fa-cart-shopping"></i> Cart</a
+              >
+            </li>
+          </ul>
+          <a
+            href="addtocart.html"
+            class="d-none d-lg-block ms-3 position-relative"
+            style="display: inline-block; width: 48px; height: 48px"
+          >
+            <span
+              style="
+                position: relative;
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+              "
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count" class="position-absolute badge rounded-pill"
+                >0</span
+              >
+            </span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-up" data-aos-duration="1200">
+      <div class="container">
+        <h1>Welcome to Global Scaleup LLC</h1>
+        <p>
+          Discover premium beauty, kitchen, fashion, and tech essentials with
+          fast shipping and unbeatable quality.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+          <a href="products.html" class="btn btn-secondary btn-lg"
+            >Explore Categories</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Highlights Section -->
+    <section
+      class="categories-section"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="row g-4">
+          <div class="col-md-3 col-6">
+            <div class="category-card" data-aos="zoom-in" data-aos-delay="100">
+              <img
+                src="images/makeup.png"
+                srcset="images/makeup.png 1200w, images/makeup.png 600w"
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Beauty Products"
+                loading="lazy"
+              />
+              <div class="category-overlay">
+                <h4>Beauty</h4>
+              </div>
+              <a href="products.html#beauty" class="stretched-link"></a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="category-card" data-aos="zoom-in" data-aos-delay="200">
+              <img
+                src="images/plates.jpeg"
+                srcset="images/plates.jpeg 1200w, images/plates.jpeg 600w"
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Beauty Products"
+                loading="lazy"
+              />
+
+              <div class="category-overlay">
+                <h4>Kitchen</h4>
+              </div>
+              <a
+                href="products.html#kitchen-appliances"
+                class="stretched-link"
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="category-card" data-aos="zoom-in" data-aos-delay="300">
+              <img
+                src="images/hoodie image.jpg"
+                srcset="
+                images/hoodie image.jpg      1200w,
+                images/hoodie image.jpg  600w
+              "
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Beauty Products"
+                loading="lazy"
+              />
+              <div class="category-overlay">
+                <h4>Man Wears</h4>
+              </div>
+              <a href="products.html#man-wears" class="stretched-link"></a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="category-card" data-aos="zoom-in" data-aos-delay="400">
+              <img
+                src="images/microwave oven image.jpg"
+                srcset="
+                images/microwave oven image.jpg      1200w,
+                images/microwave oven image.jpg  600w
+              "
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Beauty Products"
+                loading="lazy"
+              />
+              <div class="category-overlay">
+                <h4>Electronics</h4>
+              </div>
+              <a href="products.html#electronics" class="stretched-link"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section
+      class="products-section"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="row g-4">
+          <div class="col-md-3 col-6">
+            <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+              <div class="product-badge trending">Trending</div>
+              <img
+                src="images/sneaker image.jfif"
+                srcset="images/sneaker image.jfif 1200w, images/sneaker image.jfif 600w"
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Sustainable Sneakers"
+                loading="lazy"
+              />
+              <div class="image-overlay"></div>
+              <div class="feature-overlay">Eco-Friendly</div>
+              <div class="card-body">
+                <h5 class="card-title">Sustainable Sneakers</h5>
+                <!-- <p class="tagline">Style Meets Sustainability</p>
+              <p class="card-text">Eco-friendly materials, ultimate comfort.</p> -->
+                <div class="product-price">$120.00</div>
+                <div class="btn-container">
+                  <button
+                    class="btn btn-primary add-to-cart-btn"
+                    data-product="Sustainable Sneakers"
+                    data-price="120.00"
+                    data-image="images/sneaker image.jfif"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="btn btn-quick-view quick-view-btn"
+                    data-product="Sustainable Sneakers"
+                  >
+                    Quick View
+                  </button>
+                </div>
+                <a href="products.html#man-wears" class="view-details"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="col-md-3 col-6">
+            <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+              <div class="product-badge trending">Trending</div>
+              <img
+                src="images/LED Image.jfif"
+                srcset="images/LED Image.jfif 1200w, images/LED Image.jfif 600w"
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Smart LED Lamp"
+                loading="lazy"
+              />
+              <div class="image-overlay"></div>
+              <div class="feature-overlay">Customizable</div>
+              <div class="card-body">
+                <h5 class="card-title">Smart LED Lamp</h5>
+                <!-- <p class="tagline">Light Your Way</p>
+                <p class="card-text">Adjustable colors for any mood.</p> -->
+                <div class="product-price">$65.00</div>
+                <div class="btn-container">
+                  <button
+                    class="btn btn-primary add-to-cart-btn"
+                    data-product="Smart LED Lamp"
+                    data-price="65.00"
+                    data-image="images/LED Image.jfif"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="btn btn-quick-view quick-view-btn"
+                    data-product="Smart LED Lamp"
+                  >
+                    Quick View
+                  </button>
+                </div>
+                <a href="products.html#electronics" class="view-details"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6">
+            <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
+              <div class="product-badge new">New</div>
+              <img
+                src="images/hyderating serum.webp"
+                srcset="images/hyderating serum.webp 1200w, images/hyderating serum.webp 600w"
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Hydrating Beauty Serum"
+                loading="lazy"
+              />
+              <div class="image-overlay"></div>
+              <div class="feature-overlay">Hydrating</div>
+              <div class="card-body">
+                <h5 class="card-title">Beauty Serum</h5>
+
+                <div class="product-price">$45.00</div>
+                <div class="btn-container">
+                  <button
+                    class="btn btn-primary add-to-cart-btn"
+                    data-product="Beauty Serum"
+                    data-price="45.00"
+                    data-image="images/hyderating serum.webp"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="btn btn-quick-view quick-view-btn"
+                    data-product="Beauty Serum"
+                  >
+                    Quick View
+                  </button>
+                </div>
+                <a href="products.html#beauty" class="view-details"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Product 4 -->
+          <div class="col-md-3 col-6">
+            <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
+              <div class="product-badge best-seller">Best Seller</div>
+              <img
+                src="images/headphones.png"
+                srcset="
+                  images/headphones.png       1200w,
+                  images/headphones_small.png  600w
+                "
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Wireless Headphones"
+                loading="lazy"
+              />
+              <div class="image-overlay"></div>
+              <div class="feature-overlay">Noise Cancelling</div>
+              <div class="card-body">
+                <h5 class="card-title">Wireless Headphones</h5>
+
+                <div class="product-price">$89.99</div>
+                <div class="btn-container">
+                  <button
+                    class="btn btn-primary add-to-cart-btn"
+                    data-product="Wireless Headphones"
+                    data-price="89.99"
+                    data-image="images/headphones.png"
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    class="btn btn-quick-view quick-view-btn"
+                    data-product="Wireless Headphones"
+                  >
+                    Quick View
+                  </button>
+                </div>
+                <a href="products.html#electronics" class="view-details"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="products.html" class="btn btn-primary btn-lg"
+            >View All Products</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Shop With Us Section -->
+    <section class="why-us-section" data-aos="fade-up" data-aos-duration="1200">
+      <div class="container">
+        <h2 class="section-title">Why Shop With Us</h2>
+        <div class="row g-4">
+          <div class="col-md-4 col-6">
+            <div class="feature-box" data-aos="zoom-in" data-aos-delay="100">
+              <i class="fas fa-star"></i>
+              <h4>Quality</h4>
+              <p>High standards for durability and performance.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="feature-box" data-aos="zoom-in" data-aos-delay="200">
+              <i class="fas fa-truck"></i>
+              <h4>Fast</h4>
+              <p>Reliable and fast delivery to your doorstep.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="feature-box" data-aos="zoom-in" data-aos-delay="300">
+              <i class="fas fa-headset"></i>
+              <h4>Support</h4>
+              <p>Our team is ready to assist you anytime.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="feature-box" data-aos="zoom-in" data-aos-delay="400">
+              <i class="fas fa-user-check"></i>
+              <h4>Picks</h4>
+              <p>Personalized recommendations just for you.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="feature-box" data-aos="zoom-in" data-aos-delay="500">
+              <i class="fas fa-recycle"></i>
+              <h4>Eco</h4>
+              <p>Eco-friendly, recyclable packaging only.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="feature-box" data-aos="zoom-in" data-aos-delay="600">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Secure</h4>
+              <p>All payments are encrypted and safe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section
+      class="services-section"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="row g-4">
+          <div class="col-md-3 col-6">
+            <div
+              class="service-card"
+              data-aos="fade-right"
+              data-aos-delay="100"
+            >
+              <i class="fa-solid fa-paint-brush"></i>
+              <h3 style="font-size: 1.2rem">Customization</h3>
+              <p style="font-size: 0.9rem">
+                Customize your products with unique designs.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+              <i class="fa-solid fa-truck-fast"></i>
+              <h3 style="font-size: 1.2rem">Fast Shipping</h3>
+              <p style="font-size: 0.9rem">
+                Quick delivery options with live tracking.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+              <i class="fa-solid fa-headset"></i>
+              <h3 style="font-size: 1.2rem">24/7 Support</h3>
+              <p style="font-size: 0.9rem">
+                We’re here anytime you need assistance.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="service-card" data-aos="fade-left" data-aos-delay="400">
+              <i class="fa-solid fa-shield-alt"></i>
+              <h3 style="font-size: 1.2rem">Secure Payments</h3>
+              <p style="font-size: 0.9rem">
+                Safe, encrypted, and multiple ways to pay.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Banner Section -->
+    <section class="promo-section" data-aos="fade-up" data-aos-duration="1200">
+      <div class="container">
+        <h2>Up to 50% Off Winter Collection</h2>
+        <p>
+          Shop our exclusive winter deals on fashion, tech, and more. Limited
+          time only!
+        </p>
+        <a href="products.html" class="btn btn-primary btn-lg">Shop Sale</a>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section
+      class="testimonials-section"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div
+          id="testimonialCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="3500"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row justify-content-center">
+                <div class="col-md-4 col-12">
+                  <div
+                    class="testimonial-card"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop"
+                      alt="Sarah"
+                      loading="lazy"
+                    />
+                    <div class="stars">★★★★★</div>
+                    <p>"Top-quality products and lightning-fast delivery!"</p>
+                    <h5>- Sarah, Happy Customer</h5>
+                  </div>
+                </div>
+                <div class="col-md-4 col-12 d-none d-md-block">
+                  <div
+                    class="testimonial-card"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
+                      alt="John"
+                      loading="lazy"
+                    />
+                    <div class="stars">★★★★☆</div>
+                    <p>"Amazing experience, great customer service!"</p>
+                    <h5>- John, Loyal Customer</h5>
+                  </div>
+                </div>
+                <div class="col-md-4 col-12 d-none d-md-block">
+                  <div
+                    class="testimonial-card"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
+                      alt="Emma"
+                      loading="lazy"
+                    />
+                    <div class="stars">★★★★★</div>
+                    <p>"High-quality products, friendly service."</p>
+                    <h5>- Emma, Satisfied Buyer</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row justify-content-center">
+                <div class="col-md-4 col-12">
+                  <div
+                    class="testimonial-card"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop"
+                      alt="Alex"
+                      loading="lazy"
+                    />
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent quality, will buy again!"</p>
+                    <h5>- Alex, Returning Customer</h5>
+                  </div>
+                </div>
+                <div class="col-md-4 col-12 d-none d-md-block">
+                  <div
+                    class="testimonial-card"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
+                      alt="Nina"
+                      loading="lazy"
+                    />
+                    <div class="stars">★★★★☆</div>
+                    <p>"Loved the shopping experience!"</p>
+                    <h5>- Nina, Satisfied Buyer</h5>
+                  </div>
+                </div>
+                <div class="col-md-4 col-12 d-none d-md-block">
+                  <div
+                    class="testimonial-card"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=100&auto=format&fit=crop"
+                      alt="Adam"
+                      loading="lazy"
+                    />
+                    <div class="stars">★★★★★</div>
+                    <p>"Best online store I’ve used!"</p>
+                    <h5>- Adam, Happy Client</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Highlights Section -->
+    <section class="blog-section" data-aos="fade-up" data-aos-duration="1200">
+      <div class="container">
+        <h2 class="section-title">From Our Blog</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="blog-card" data-aos="fade-right" data-aos-delay="100">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+                alt="Tech Trends"
+                loading="lazy"
+              />
+              <div class="card-body">
+                <h5>Top Tech Trends for 2025</h5>
+                <p>
+                  Explore the latest gadgets shaping the future of technology.
+                </p>
+                <a href="index.html">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="images/sustainable.webp"
+                srcset="
+                  images/sustainable.webp       1200w,
+                  images/sustainable_small.webp  600w
+                "
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Sustainable Fashion"
+                loading="lazy"
+              />
+              <div class="card-body">
+                <h5>Sustainable Fashion Tips</h5>
+                <p>Learn how to shop eco-friendly without sacrificing style.</p>
+                <a href="index.html">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="blog-card" data-aos="fade-left" data-aos-delay="300">
+              <img
+                src="images/beautyhack.webp"
+                srcset="
+                  images/beautyhack.webp       1200w,
+                  images/beautyhack_small.webp  600w
+                "
+                sizes="(max-width: 600px) 600px, 1200px"
+                alt="Beauty Hacks"
+                loading="lazy"
+              />
+              <div class="card-body">
+                <h5>Beauty Hacks for 2025</h5>
+                <p>Discover skincare and makeup tips for a radiant look.</p>
+                <a href="index.html">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Cart Icon -->
+    <div class="cart-float" onclick="window.location.href='addtocart.html'">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span id="cart-count">0</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row mb-4 g-4">
+          <div class="col-md-4 col-12">
+            <div class="footer-title">About Global Scaleup LLC</div>
+            <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="footer-title">Quick Links</div>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item d-lg-none"><a class="nav-link" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
-        </ul>
-        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative">
-          <i class="fa-solid fa-cart-shopping fa-lg"></i>
-          <span id="cart-count" class="position-absolute"></span>
-        </a>
+          </div>
+          <div class="col-md-4 col-6">
+            <div class="footer-title">Contact</div>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://www.globalscaleupllc.com" target="_blank"
+                  ><i class="fas fa-globe"></i> www.globalscaleupllc.com</a
+                >
+              </li>
+              <li>
+                <a href="mailto:support@globalscaleupllc.com"
+                  ><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+17372831916"
+                  ><i class="fas fa-phone"></i> +1737-283-1916</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="newsletter-form">
+          <h3 class="footer-title text-center">Stay Updated</h3>
+          <div class="input-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter your email"
+              id="newsletter-email"
+            />
+            <button class="btn btn-primary" id="newsletter-submit">
+              Subscribe
+            </button>
+          </div>
+        </div>
+        <p class="mb-0 text-center">
+          © 2025 Global Scaleup LLC. All rights reserved.
+        </p>
       </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div
+      class="scroll-to-top"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      <i class="fas fa-chevron-up"></i>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section" data-aos="fade-up">
-    <div class="container">
-      <h1>Welcome to Global Scaleup LLC</h1>
-      <p>Your one-stop shop for beauty, kitchen, and tech essentials. Discover quality products and fast shipping!</p>
-      <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
-      <br>
-      <img src="images/banner3.png" alt="Hero Banner" class="img-fluid hero-banner" data-aos="zoom-in" data-aos-delay="200">
-    </div>
-  </section>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // SweetAlert2 Custom Styling
+      const swalStyles = `
+      .swal2-title { color: #1E40AF !important; font-family: 'Inter', sans-serif; }
+      .swal2-html-container { color: #1F2937 !important; font-family: 'Inter', sans-serif; }
+      .swal2-confirm { 
+        background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%) !important; 
+        border-radius: 30px !important; 
+        color: #ffffff !important; 
+        font-weight: 600 !important; 
+      }
+      .swal2-confirm:hover {
+        background: linear-gradient(90deg, #60A5FA 0%, #1E40AF 100%) !important;
+      }
+    `;
+      const style = document.createElement("style");
+      style.innerHTML = swalStyles;
+      document.head.appendChild(style);
 
-  <!-- Products Section -->
-  <section class="products-section" data-aos="fade-up">
-    <div class="container">
-      <h2>Featured Products</h2>
-      <div class="row g-4">
-        <div class="col-md-3 col-6">
-          <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
-            <img src="images/blush image.jpeg" alt="Blush On">
-            <div class="card-body">
-              <h5 class="card-title">Blush On</h5>
-              <p class="card-text">High-quality blush for a natural glow.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Blush On" data-price="15" data-image="images/blush image.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
-            <img src="images/Concealer-2.jpeg" alt="Concealer">
-            <div class="card-body">
-              <h5 class="card-title">Concealer</h5>
-              <p class="card-text">Covers imperfections for flawless skin.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Concealer" data-price="12" data-image="images/Concealer-2.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
-            <img src="images/Foundation.jpeg" alt="Foundation">
-            <div class="card-body">
-              <h5 class="card-title">Foundation</h5>
-              <p class="card-text">Smooth, long-lasting coverage.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Foundation" data-price="18" data-image="images/Foundation.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
-            <img src="images/shirts.jpeg" alt="Shirts">
-            <div class="card-body">
-              <h5 class="card-title">Shirts</h5>
-              <p class="card-text">Trendy and comfortable men's shirts.</p>
-              <button class="btn btn-primary add-to-cart-btn" data-product="Shirts" data-price="25" data-image="images/shirts.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      // Cart Logic
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        document
+          .querySelectorAll("#cart-count")
+          .forEach((el) => (el.textContent = cart.length));
+      }
 
-  <!-- Services Section -->
-  <section class="services-section" data-aos="fade-up">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="service-card" data-aos="fade-right" data-aos-delay="100">
-            <h3><i class="fa-solid fa-paint-brush"></i> Product Customization</h3>
-            <p>We offer personalized customization for select products.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-            <h3><i class="fa-solid fa-truck-fast"></i> Fast Shipping</h3>
-            <p>Get your products delivered in record time with our express shipping.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-card" data-aos="fade-left" data-aos-delay="300">
-            <h3><i class="fa-solid fa-headset"></i> 24/7 Support</h3>
-            <p>Our customer support is available round the clock to assist you.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials-section" data-aos="fade-up">
-    <div class="container">
-      <h2>What Our Customers Say</h2>
-      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row justify-content-center">
-              <div class="col-md-4">
-                <div class="testimonial-card">
-                  <p>"The products are top quality, and I love the fast delivery!"</p>
-                  <h5>- Sarah, Happy Customer</h5>
-                </div>
-              </div>
-              <div class="col-md-4 d-none d-md-block">
-                <div class="testimonial-card">
-                  <p>"Amazing experience with Global Scaleup LLC."</p>
-                  <h5>- John, Loyal Customer</h5>
-                </div>
-              </div>
-              <div class="col-md-4 d-none d-md-block">
-                <div class="testimonial-card">
-                  <p>"Fast shipping, friendly service, and high-quality product."</p>
-                  <h5>- Emma, Satisfied Buyer</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row justify-content-center">
-              <div class="col-md-4">
-                <div class="testimonial-card">
-                  <p>"Excellent quality and timely support. Will buy again!"</p>
-                  <h5>- Alex, Returning Customer</h5>
-                </div>
-              </div>
-              <div class="col-md-4 d-none d-md-block">
-                <div class="testimonial-card">
-                  <p>"Absolutely loved it. Great experience from start to finish!"</p>
-                  <h5>- Nina, Satisfied Buyer</h5>
-                </div>
-              </div>
-              <div class="col-md-4 d-none d-md-block">
-                <div class="testimonial-card">
-                  <p>"This is the best online service I’ve used in a while!"</p>
-                  <h5>- Adam, Happy Client</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Floating Cart Icon -->
-  <div class="cart-float" onclick="window.location.href='addtocart.html'">
-    <i class="fa-solid fa-cart-shopping"></i>
-    <span id="cart-count">0</span>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-md-4">
-          <div class="footer-title">About Global Scaleup LLC</div>
-          <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
-        </div>
-        <div class="col-md-4">
-          <div class="footer-title">Quick Links</div>
-          <ul class="list-unstyled">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <div class="footer-title">Contact</div>
-          <ul class="list-unstyled">
-            <li><a href="https://www.globalscaleupllc.com" target="_blank"><i class="fas fa-globe"></i> www.globalscaleupllc.com</a></li>
-            <li><a href="mailto:support@globalscaleupllc.com"><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a></li>
-            <li><a href="tel:+17372831916"><i class="fas fa-phone"></i> +1737-283-1916</a></li>
-          </ul>
-        </div>
-      </div>
-      <p class="mb-0">&copy; 2025 Global Scaleup LLC. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // --- Cart Logic for All Pages ---
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      // Update all cart-count spans (navbar and floating icon)
-      document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
-    }
-
-    function addToCart(product) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(product);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartCount();
-    }
-
-    // Attach event listeners to all add-to-cart buttons
-    document.addEventListener('DOMContentLoaded', function() {
-      updateCartCount();
-      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const productName = btn.getAttribute('data-product');
-          const productPrice = btn.getAttribute('data-price');
-          const productImage = btn.getAttribute('data-image');
-          addToCart({ name: productName, price: productPrice, image: productImage });
-          btn.textContent = "Added!";
-          btn.disabled = true;
-          setTimeout(() => {
-            btn.textContent = "Add to Cart";
-            btn.disabled = false;
-          }, 1200);
+      function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        document.querySelector(".cart-float").classList.add("added");
+        setTimeout(
+          () => document.querySelector(".cart-float").classList.remove("added"),
+          500
+        );
+        Swal.fire({
+          icon: "success",
+          title: "Added to Cart!",
+          text: `${product.name} has been added to your cart.`,
+          showConfirmButton: true,
+          confirmButtonText: "OK",
+          timer: 2000,
         });
+      }
+
+      // Quick View Placeholder
+      function showQuickView(productName) {
+        Swal.fire({
+          icon: "info",
+          title: `Quick View: ${productName}`,
+          text: `Explore more details about ${productName}. This feature is coming soon!`,
+          showConfirmButton: true,
+          confirmButtonText: "OK",
+          timer: 2000,
+        });
+      }
+
+      // Newsletter Signup
+      function handleNewsletterSignup() {
+        const email = document.getElementById("newsletter-email").value;
+        if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          Swal.fire({
+            icon: "success",
+            title: "Subscribed!",
+            text: "You’ve successfully joined our newsletter.",
+            timer: 2000,
+          });
+          document.getElementById("newsletter-email").value = "";
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Invalid Email",
+            text: "Please enter a valid email address.",
+            timer: 2000,
+          });
+        }
+      }
+
+      // Initialize AOS and Event Listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          duration: 800,
+          offset: 100,
+        });
+
+        updateCartCount();
+
+        const scrollToTopBtn = document.querySelector(".scroll-to-top");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add("show");
+          } else {
+            scrollToTopBtn.classList.remove("show");
+          }
+        });
+
+        document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const productName = btn.getAttribute("data-product");
+            const productPrice = btn.getAttribute("data-price");
+            const productImage = btn.getAttribute("data-image");
+            addToCart({
+              name: productName,
+              price: productPrice,
+              image: productImage,
+            });
+          });
+        });
+
+        document.querySelectorAll(".quick-view-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const productName = btn.getAttribute("data-product");
+            showQuickView(productName);
+          });
+        });
+
+        document
+          .getElementById("newsletter-submit")
+          .addEventListener("click", handleNewsletterSignup);
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

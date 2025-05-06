@@ -1,372 +1,807 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About - GlobalLLC</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-
-    <style>
-      body {
-        background-color: #f5f9ff;
-        color: #333;
-      }
-
-      .about-hero {
-        background: linear-gradient(to right, #0056b3, #007bff, #3399ff);
-        color: white;
-        padding: 100px 20px;
-        text-align: center;
-        animation: fadeIn 2s ease-in-out;
-        border-bottom: 3px solid #fff;
-      }
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Global Scaleup LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #E0F2FE 0%, #FFFFFF 100%);
+      color: #1F2937;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+    .navbar-brand img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    .nav-link {
+      color: #1E40AF !important;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #60A5FA !important;
+      transform: translateY(-2px);
+    }
+    .dropdown-menu {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-item {
+      color: #1F2937;
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+    .dropdown-item:hover {
+      color: #60A5FA;
+      background: #F1F5F9;
+    }
+    #cart-count {
+      background: #1E40AF !important;
+      color: #ffffff !important;
+      font-size: 1rem !important;
+      min-width: 24px !important;
+      min-height: 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      left: 70% !important;
+      top: 10% !important;
+      transform: translate(-50%, 0) !important;
+      padding: 0 6px !important;
+      font-weight: 700 !important;
+      border-radius: 50% !important;
+      border: 3px solid #ffffff !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+      animation: bounce 1.5s infinite;
+    }
+    .fa-cart-shopping {
+      font-size: 2.2rem !important;
+      color: #1E40AF !important;
+      line-height: 52px !important;
+      text-align: center !important;
+      width: 52px !important;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .fa-cart-shopping:hover {
+      color: #60A5FA !important;
+      transform: scale(1.2);
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+    .about-hero {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(96, 165, 250, 0.8)), url('https://images.unsplash.com/photo-1556740738-6b4d43f81b8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+      color: #ffffff;
+      padding: 120px 20px;
+      text-align: center;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .about-hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: auto;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    .about-hero .btn-primary {
+      margin-top: 2rem;
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      animation: gradientShift 3s ease infinite;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      margin: 1rem auto 0;
+      width: 100px;
+      height: 6px;
+      border-radius: 3px;
+      background: #60A5FA;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .section p {
+      line-height: 1.8;
+      color: #1F2937;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .values, .features, .team, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .value-box, .feature-box, .team-member, .testimonial-box {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, background 0.3s ease;
+      text-align: center;
+    }
+    .value-box:hover, .feature-box:hover, .team-member:hover, .testimonial-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border: 2px solid #60A5FA;
+      background: linear-gradient(135deg, #F1F5F9 0%, #ffffff 100%);
+    }
+    .value-box h4, .feature-box h4, .team-member h4, .testimonial-box h4 {
+      color: #1E40AF;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .value-box i, .feature-box i {
+      color: #60A5FA;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .value-box p, .feature-box p, .team-member p, .testimonial-box p {
+      color: #1F2937;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .team-member img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, border 0.3s ease;
+      border: 3px solid transparent;
+    }
+    .team-member:hover img {
+      transform: scale(1.1);
+      border: 3px solid #60A5FA;
+    }
+    .team-member .role {
+      color: #60A5FA;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .testimonial-box i {
+      color: #60A5FA;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .testimonial-box .stars {
+      color: #FFD700;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+    .testimonial-box:hover .stars {
+      transform: scale(1.1);
+    }
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #60A5FA;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      margin: 20px 0;
+      width: 50%;
+      padding: 20px;
+    }
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item.right {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-item .dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #1E40AF;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+    }
+    .timeline-item.left .dot {
+      right: -10px;
+    }
+    .timeline-item.right .dot {
+      left: -10px;
+    }
+    .timeline-item:hover .dot {
+      transform: translateY(-50%) scale(1.3);
+    }
+    .timeline-item .content {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    .timeline-item:hover .content {
+      transform: translateY(-5px);
+    }
+    .timeline-item h4 {
+      color: #1E40AF;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .timeline-item p {
+      color: #1F2937;
+      font-size: 1rem;
+    }
+    .community-section {
+      background: url('https://images.unsplash.com/photo-1593113598332-cd84a1a4a813?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+      padding: 80px 20px;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+    }
+    .community-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.7), rgba(96, 165, 250, 0.7));
+      z-index: 1;
+    }
+    .community-section .container {
+      position: relative;
+      z-index: 2;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 0.8rem 2.2rem;
+      font-weight: 600;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #60A5FA 0%, #1E40AF 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+    .btn-primary:active::after {
+      width: 200px;
+      height: 200px;
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+    .footer {
+      background: #ffffff;
+      padding: 4rem 0;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1E40AF;
+      margin-bottom: 1.2rem;
+    }
+    .footer a {
+      color: #1F2937;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .footer a:hover {
+      color: #60A5FA;
+      transform: translateX(5px);
+    }
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #1E40AF, #60A5FA);
+      color: #ffffff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 768px) {
       .about-hero h1 {
-        font-size: 3.8rem;
-        margin-bottom: 10px;
-        animation: slideInFromTop 1s ease-out;
+        font-size: 3rem;
       }
-
       .about-hero p {
-        font-size: 1.3rem;
-        max-width: 700px;
-        margin: auto;
-        animation: fadeIn 2s ease-in-out;
-        opacity: 0.8;
-      }
-
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideInFromTop {
-        0% {
-          transform: translateY(-100px);
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      .section {
-        padding: 50px 20px;
-        max-width: 1000px;
-        margin: auto;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      .section h2 {
-        color: #0056b3;
-        font-size: 2.8rem;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      .section p {
-        line-height: 1.6;
-        color: #555;
         font-size: 1.1rem;
-        text-align: center;
-        margin-bottom: 40px;
       }
-
-      .values {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
+      .section-title {
+        font-size: 2.2rem;
       }
-
-      .value-box {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #cce0ff;
-        transition: transform 0.3s ease, box-shadow 0.3s ease,
-          background-color 0.3s ease;
-      }
-
-      .value-box:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        background-color: #e6f4ff;
-      }
-
-      .value-box h4 {
-        color: #007bff;
-        margin-bottom: 10px;
-      }
-
-      .value-box p {
-        color: #555;
+      .section p {
         font-size: 1rem;
       }
-
-      .team {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
+      .value-box h4, .feature-box h4, .team-member h4, .testimonial-box h4 {
+        font-size: 1.4rem;
       }
-
-      .team-member {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      .value-box p, .feature-box p, .team-member p, .testimonial-box p {
+        font-size: 0.95rem;
       }
-
-      .team-member:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      }
-
       .team-member img {
         width: 120px;
         height: 120px;
-        border-radius: 50%;
-        margin-bottom: 15px;
       }
-
-      .team-member h4 {
-        color: #007bff;
-        margin-bottom: 10px;
+      .timeline::before {
+        left: 20px;
       }
-
-      .team-member p {
-        color: #555;
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left;
+        padding-left: 50px;
+      }
+      .timeline-item .dot {
+        left: 10px !important;
+        right: auto !important;
+      }
+      .navbar-brand img {
+        height: 42px !important;
+      }
+    }
+    @media (max-width: 576px) {
+      .about-hero {
+        padding: 80px 15px;
+        min-height: 300px;
+      }
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+      .about-hero p {
         font-size: 1rem;
       }
-
-      footer {
-        background-color: #003366;
-        color: #1976d2;
-        padding: 40px 20px;
-        text-align: center;
+      .section {
+        padding: 40px 15px;
       }
-
-      .footer .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        margin-bottom: 20px;
+      .section-title {
+        font-size: 1.8rem;
       }
-
-      .footer .footer-column h4 {
-        margin-bottom: 10px;
-        font-size: 1.1rem;
-        border-bottom: 1px solid white;
-        padding-bottom: 5px;
+      .value-box, .feature-box, .team-member, .testimonial-box {
+        padding: 20px;
       }
-
-      .footer .footer-column ul {
-        list-style: none;
-        padding: 0;
+      .team-member img {
+        width: 100px;
+        height: 100px;
       }
-
-      .footer .footer-column ul li {
-        margin-bottom: 5px;
+      .scroll-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
       }
-
-      .footer .footer-column ul li a {
-        color: #ccc;
-        text-decoration: none;
+      .timeline-item h4 {
+        font-size: 1.2rem;
       }
-
-      .footer .footer-column ul li a:hover {
-        color: white;
+      .timeline-item p {
+        font-size: 0.95rem;
       }
-
-      #logos {
-        height: 70px;
-        width: 230px;
-      }
-
-    </style>
-  </head>
-
-  <body>
-    <!-- Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/logo.jpeg" alt="GlobalLLC Logo" style="height:48px;">
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/logo..png" alt="GlobalLLC Logo" style="height:48px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html" aria-current="page">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="products.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item" href="products.html#beauty">Beauty</a></li>
+              <li><a class="dropdown-item" href="products.html#kitchen">Kitchen Appliances</a></li>
+              <li><a class="dropdown-item" href="products.html#man-wears">Man Wears</a></li>
+              <li><a class="dropdown-item" href="products.html#electronics">Electronics</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+        </ul>
+        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative" style="display: inline-block; width: 52px; height: 52px;">
+          <span style="position: relative; display: inline-block; width: 52px; height: 52px;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="position-absolute badge rounded-pill">0</span>
+          </span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" 
-                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="about.html" aria-current="page">About</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="products.html" id="productsDropdown" 
-                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Products
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                <li><a class="dropdown-item" href="products.html#beauty">Beauty</a></li>
-                <li><a class="dropdown-item" href="products.html#kitchen">Kitchen Appliances</a></li>
-                <li><a class="dropdown-item" href="products.html#man-wears">Man Wears</a></li>
-                <li><a class="dropdown-item" href="products.html#electronics">Electronics</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            <li class="nav-item d-lg-none">
-              <a class="nav-link" href="addtocart.html">
-                <i class="fa-solid fa-cart-shopping"></i> Cart
-              </a>
-            </li>
-          </ul>
-          <a href="addtocart.html" class="d-none d-lg-block ms-3 text-dark">
-            <i class="fa-solid fa-cart-shopping fa-lg"></i>
-            <span id="count" class="badge bg-primary rounded-pill">0</span>
-          </a>
-        </div>
       </div>
-    </nav>
-
-    <div class="about-hero">
-      <h1>About Us</h1>
-      <p>
-        Empowering people with quality products and top-tier service, Global
-        Scaleup LLC is here to redefine online shopping.
-      </p>
     </div>
+  </nav>
 
-    <section class="section">
-      <h2>Our Mission</h2>
+  <!-- Hero Section -->
+  <div class="about-hero" data-aos="fade-up" data-aos-duration="1200">
+    <div class="container">
+      <h1>About Global Scaleup LLC</h1>
+      <p>Empowering people with quality products and exceptional service, we’re redefining the online shopping experience with innovation and trust.</p>
+      <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+  </div>
+
+  <!-- Our Story Section -->
+  <section class="section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">Our Story</h2>
+    <p>
+      Founded in 2020, Global Scaleup LLC began with a simple yet ambitious vision: to make premium products accessible to everyone, anywhere. What started as a small team passionate about quality and innovation has grown into a global e-commerce platform, serving thousands of customers across beauty, tech, fashion, and home essentials. Our journey is rooted in a commitment to excellence, driven by our belief that shopping should be seamless, inspiring, and trustworthy. From curating cutting-edge electronics to offering sustainable fashion, we’ve built a brand that stands for reliability and forward-thinking solutions.
+    </p>
+  </section>
+
+  <!-- Milestones Section -->
+  <section class="section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">Our Milestones</h2>
+    <div class="timeline">
+      <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2020 - Founded</h4>
+          <p>Global Scaleup LLC was born with a mission to redefine e-commerce.</p>
+        </div>
+      </div>
+      <div class="timeline-item right" data-aos="fade-left" data-aos-delay="200">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2021 - First Product Launch</h4>
+          <p>Introduced our beauty and electronics lines, gaining 10,000 customers.</p>
+        </div>
+      </div>
+      <div class="timeline-item left" data-aos="fade-right" data-aos-delay="300">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2022 - Global Expansion</h4>
+          <p>Expanded to 20 countries, offering fast shipping worldwide.</p>
+        </div>
+      </div>
+      <div class="timeline-item right" data-aos="fade-left" data-aos-delay="400">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2023 - Sustainability Commitment</h4>
+          <p>Launched eco-friendly packaging and sustainable product lines.</p>
+        </div>
+      </div>
+      <div class="timeline-item left" data-aos="fade-right" data-aos-delay="500">
+        <div class="dot"></div>
+        <div class="content">
+          <h4>2024 - 1 Million Customers</h4>
+          <p>Reached a milestone of serving over 1 million happy customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">Our Mission & Vision</h2>
+    <p>
+      At Global Scaleup LLC, our mission is to deliver exceptional products that enhance lives while fostering trust and sustainability. Our vision is to lead the e-commerce industry by combining innovation, quality, and community impact, creating a shopping experience that inspires and empowers.
+    </p>
+    <div class="values">
+      <div class="value-box" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-users"></i>
+        <h4>Customer First</h4>
+        <p>We prioritize your satisfaction with unparalleled quality, personalized service, and 24/7 support.</p>
+      </div>
+      <div class="value-box" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-lightbulb"></i>
+        <h4>Innovation</h4>
+        <p>We embrace the latest trends and technologies to bring you cutting-edge products and solutions.</p>
+      </div>
+      <div class="value-box" data-aos="zoom-in" data-aos-delay="500">
+        <i class="fas fa-globe"></i>
+        <h4>Global Reach</h4>
+        <p>Our network spans across borders, delivering excellence to customers worldwide.</p>
+      </div>
+      <div class="value-box" data-aos="zoom-in" data-aos-delay="600">
+        <i class="fas fa-chart-line"></i>
+        <h4>Growth & Excellence</h4>
+        <p>We strive for continuous improvement, aiming to exceed expectations in every aspect.</p>
+      </div>
+      
+      <div class="value-box" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-handshake"></i>
+        <h4>Trust</h4>
+        <p>Built on honesty and transparency, we ensure every interaction is reliable and authentic.</p>
+      </div>
+      <div class="value-box" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-leaf"></i>
+        <h4>Sustainability</h4>
+        <p>Committed to eco-friendly practices, from packaging to product sourcing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">Why Choose Us</h2>
+    <div class="features">
+      <div class="feature-box" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-star"></i>
+        <h4>Quality Products</h4>
+        <p>Each product is rigorously tested to meet the highest standards of performance and durability.</p>
+      </div>
+      <div class="feature-box" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-truck"></i>
+        <h4>Fast Shipping</h4>
+        <p>Swift and reliable delivery ensures your products arrive when you need them, anywhere in the world.</p>
+      </div>
+      <div class="feature-box" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-headset"></i>
+        <h4>24/7 Support</h4>
+        <p>Our dedicated team is available round-the-clock to answer questions and resolve issues.</p>
+      </div>
+      <div class="feature-box" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-user-check"></i>
+        <h4>Personalized Shopping</h4>
+        <p>Enjoy tailored recommendations and a shopping experience customized to your needs.</p>
+      </div>
+      <div class="feature-box" data-aos="zoom-in" data-aos-delay="500">
+        <i class="fas fa-recycle"></i>
+        <h4>Eco-Friendly Packaging</h4>
+        <p>We use sustainable, biodegradable materials to minimize our environmental impact.</p>
+      </div>
+      <div class="feature-box" data-aos="zoom-in" data-aos-delay="600">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Secure Payments</h4>
+        <p>Shop with confidence using our encrypted transactions and diverse payment options.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">Meet Our Team</h2>
+    <div class="team">
+      <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/member1.jpeg" alt="Adeel Saleem">
+        <h4>Adeel Saleem</h4>
+        <p class="role">Founder & CEO</p>
+        <p>A visionary leader with over 10 years in e-commerce, Adeel drives our mission to innovate and inspire.</p>
+      </div>
+      <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
+        <img src="images/member2.jpg" alt="Ayaz Ahmed">
+        <h4>Ayaz Ahmed</h4>
+        <p class="role">Marketing Head</p>
+        <p>Ayaz crafts engaging campaigns that connect our brand with customers worldwide.</p>
+      </div>
+      <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
+        <img src="images/member3.jpeg" alt="Serum Siddiqui">
+        <h4>Serum Siddiqui</h4>
+        <p class="role">Technology Lead</p>
+        <p>Serum spearheads our tech innovations, ensuring a seamless and cutting-edge shopping platform.</p>
+      </div>
+  
+    
+  
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testimonials">
+      <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-quote-left"></i>
+        <div class="stars">★★★★★</div>
+        <p>Global Scaleup LLC offers unmatched product quality and lightning-fast delivery. My go-to for all shopping!</p>
+        <h4>Sarah M.</h4>
+      </div>
+      <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-quote-left"></i>
+        <div class="stars">★★★★☆</div>
+        <p>The electronics are top-notch, and their customer service team resolved my query in minutes!</p>
+        <h4>John D.</h4>
+      </div>
+      <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-quote-left"></i>
+        <div class="stars">★★★★★</div>
+        <p>I love their beauty product range. Every purchase feels like a premium experience!</p>
+        <h4>Emily R.</h4>
+      </div>
+      <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-quote-left"></i>
+        <div class="stars">★★★★☆</div>
+        <p>Their eco-friendly packaging and sustainable products make me a proud customer.</p>
+        <h4>Ali H.</h4>
+      </div>
+      <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="500">
+        <i class="fas fa-quote-left"></i>
+        <div class="stars">★★★★★</div>
+        <p>Personalized recommendations made shopping so easy. Highly recommend!</p>
+        <h4>Lina K.</h4>
+      </div>
+      <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="600">
+        <i class="fas fa-quote-left"></i>
+        <div class="stars">★★★★★</div>
+        <p>GlobalLLC never disappoints. Their product variety and prices are unbeatable!</p>
+        <h4>Usman R.</h4>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Community Impact Section -->
+  <section class="community-section" data-aos="fade-up" data-aos-duration="1200">
+    <div class="container">
+      <h2 class="section-title">Our Community Impact</h2>
       <p>
-        At Global Scaleup LLC, our mission is to deliver outstanding products
-        across various categories while offering exceptional value and service.
+        At Global Scaleup LLC, we believe in giving back. Our sustainability initiatives include using 100% biodegradable packaging and partnering with local artisans for eco-friendly products. We also support education programs, donating 5% of our profits to schools in underserved communities. Together, we’re building a better future.
       </p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Get Involved</a>
+    </div>
+  </section>
 
-      <div class="values">
-        <div class="value-box">
-          <h4>Customer First</h4>
-          <p>
-            We prioritize customer satisfaction through quality, service, and
-            support.
-          </p>
-        </div>
-        <div class="value-box">
-          <h4>Innovation</h4>
-          <p>
-            Always striving to bring new, effective solutions and the latest
-            trends to our platform.
-          </p>
-        </div>
-        <div class="value-box">
-          <h4>Trust</h4>
-          <p>
-            Our reputation is built on honesty, transparency, and reliability.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Meet Our Team</h2>
-      <div class="team">
-        <div class="team-member">
-          <img src="images/member1.jpeg" alt="Team Member" />
-          <h4>Adeel Saleem</h4>
-          <p>Founder & CEO</p>
-        </div>
-        <div class="team-member">
-          <img src="images/member3.jpeg" alt="Team Member" />
-          <h4>Serum Siddiqui</h4>
-          <p>Technology Lead</p>
-        </div>
-        <div class="team-member">
-          <img src="images/member2.jpg" alt="Team Member" />
-          <h4>Ayaz Ahmed</h4>
-          <p>Marketing Head</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-grid">
-        <div class="footer-column">
-          <h4>About Global Scaleup LLC</h4>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="footer-title">About Global Scaleup LLC</div>
           <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
         </div>
-        <div class="footer-column">
-          <h4>Quick Links</h4>
-          <ul>
+        <div class="col-md-4">
+          <div class="footer-title">Quick Links</div>
+          <ul class="list-unstyled">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-column">
-          <h4>Contact</h4>
-          <ul>
-            <li>
-              <a href="https://www.globalscaleupllc.com" target="_blank">
-                <i class="fas fa-globe"></i> www.globalscaleupllc.com
-              </a>
-            </li>
-            <li>
-              <a href="mailto:support@globalscaleupllc.com" target="_blank">
-                <i class="fas fa-envelope"></i> Email: info@globalscaleupllc.com
-              </a>
-            </li>
-            <li>
-              <a href="tel:+17372831916" target="_blank">
-                <i class="fas fa-phone"></i> Phone: +1737-283-1916
-              </a>
-            </li>
+        <div class="col-md-4">
+          <div class="footer-title">Contact</div>
+          <ul class="list-unstyled">
+            <li><a href="https://www.globalscaleupllc.com" target="_blank"><i class="fas fa-globe"></i> www.globalscaleupllc.com</a></li>
+            <li><a href="mailto:support@globalscaleupllc.com"><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a></li>
+            <li><a href="tel:+17372831916"><i class="fas fa-phone"></i> +1737-283-1916</a></li>
           </ul>
         </div>
       </div>
-      <p>&copy; 2025 Global Scaleup LLC. All rights reserved.</p>
-    </footer>
+      <p class="mb-0 text-center">© 2025 Global Scaleup LLC. All rights reserved.</p>
+    </div>
+  </footer>
 
-  </body>
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="addtocart.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     AOS.init({
       duration: 800,
-      offset: 100,
+      offset: 100
+    });
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartCount();
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+
+      // Timeline dot animation on scroll
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelector('.dot').style.transform = 'translateY(-50%) scale(1.3)';
+            setTimeout(() => {
+              entry.target.querySelector('.dot').style.transform = 'translateY(-50%) scale(1)';
+            }, 1000);
+          }
+        });
+      }, { threshold: 0.5 });
+      timelineItems.forEach(item => observer.observe(item));
     });
   </script>
-  
-  </html>
+</body>
+</html>
