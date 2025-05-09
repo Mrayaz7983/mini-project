@@ -1,8 +1,3 @@
-
-/**
- * Add to Cart Functionality - Fixed for Bootstrap Navbar
- */
-
 // Function to update cart count in the navbar
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];

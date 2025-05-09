@@ -24,6 +24,7 @@
     }
     .navbar-brand img {
       transition: transform 0.3s ease, filter 0.3s ease;
+      height: clamp(36px, 8vw, 48px);
     }
     .navbar-brand img:hover {
       transform: scale(1.1);
@@ -32,17 +33,93 @@
     .nav-link {
       color: #1E40AF !important;
       font-weight: 600;
-      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      transition: color 0.3s ease;
     }
     .nav-link:hover {
       color: #60A5FA !important;
-      transform: translateY(-2px);
+    }
+    .dropdown-menu {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-item {
+      color: #1F2937;
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+    .dropdown-item:hover {
+      color: #60A5FA;
+      background: #F1F5F9;
+    }
+    .navbar-search {
+      position: relative;
+      max-width: clamp(200px, 25vw, 300px);
+      margin-left: 1rem;
+    }
+    .navbar-search input {
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border: 2px solid #D1D5DB;
+      border-radius: 20px;
+      font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .navbar-search input:focus {
+      border-color: #60A5FA;
+      box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25);
+      outline: none;
+    }
+    .navbar-search i {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #1E40AF;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      cursor: pointer;
+    }
+    #cart-count {
+      background: #1E40AF !important;
+      color: #ffffff !important;
+      font-size: clamp(0.8rem, 1.2vw, 1rem) !important;
+      min-width: 20px !important;
+      min-height: 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      left: 70% !important;
+      top: 10% !important;
+      transform: translate(-50%, 0) !important;
+      padding: 0 4px !important;
+      font-weight: 700 !important;
+      border-radius: 50% !important;
+      border: 2px solid #ffffff !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+      animation: bounce 1.5s infinite;
+    }
+    .fa-cart-shopping {
+      font-size: clamp(1.8rem, 4vw, 2.2rem) !important;
+      color: #1E40AF !important;
+      line-height: clamp(40px, 8vw, 52px) !important;
+      text-align: center !important;
+      width: clamp(40px, 8vw, 52px) !important;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .fa-cart-shopping:hover {
+      color: #60A5FA !important;
+      transform: scale(1.2);
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
     }
     .product-section-title {
       text-align: center;
-      font-size: 2.8rem;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 700;
-      margin-bottom: 3rem;
+      margin-bottom: clamp(1rem, 2vw, 3rem);
       background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -52,9 +129,9 @@
     .product-section-title::after {
       content: "";
       display: block;
-      margin: 1rem auto 0;
-      width: 100px;
-      height: 6px;
+      margin: 0.5rem auto 0;
+      width: clamp(60px, 8vw, 100px);
+      height: 4px;
       border-radius: 3px;
       background: #60A5FA;
     }
@@ -132,70 +209,39 @@
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
-    #cart-count {
-      background: #1E40AF !important;
-      color: #ffffff !important;
-      font-size: 1rem !important;
-      min-width: 24px !important;
-      min-height: 24px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      left: 70% !important;
-      top: 10% !important;
-      transform: translate(-50%, 0) !important;
-      padding: 0 6px !important;
-      font-weight: 700 !important;
-      border-radius: 50% !important;
-      border: 3px solid #ffffff !important;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
-      animation: bounce 1.5s infinite;
-    }
-    .fa-cart-shopping {
-      font-size: 2.2rem !important;
-      color: #1E40AF !important;
-      line-height: 52px !important;
-      text-align: center !important;
-      width: 52px !important;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .fa-cart-shopping:hover {
-      color: #60A5FA !important;
-      transform: scale(1.2);
-    }
     .footer {
-      background: #ffffff;
-      padding: 4rem 0;
+      background: #1a2a44;
+      color: #d3e0ea;
+      padding: clamp(1.5rem, 4vw, 4rem) 0;
       box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
     }
     .footer-title {
-      font-size: 1.5rem;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
       font-weight: 600;
-      color: #1E40AF;
-      margin-bottom: 1.2rem;
+      color: #60a5fa;
+      margin-bottom: clamp(0.5rem, 1vw, 1rem);
     }
     .footer a {
-      color: #1F2937;
+      color: #d3e0ea;
       text-decoration: none;
-      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: clamp(0.75rem, 1.5vw, 0.95rem);
     }
     .footer a:hover {
-      color: #60A5FA;
-      transform: translateX(5px);
+      text-decoration: underline;
     }
     .scroll-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: clamp(15px, 2vw, 30px);
+      right: clamp(15px, 2vw, 30px);
       background: linear-gradient(45deg, #1E40AF, #60A5FA);
       color: #ffffff;
-      width: 60px;
-      height: 60px;
+      width: clamp(40px, 6vw, 60px);
+      height: clamp(40px, 6vw, 60px);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
@@ -210,14 +256,54 @@
       transform: scale(1.1);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -10px); }
-      60% { transform: translate(-50%, -5px); }
+    @media (max-width: 991px) {
+      .navbar {
+        padding: 0.5rem 0;
+      }
+      .navbar-brand {
+        margin: 0;
+      }
+      .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #ffffff;
+        width: 200px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+      .navbar-right {
+        margin-left: auto;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+      }
+      .nav-link i {
+        margin-right: 0.5rem;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      }
+      .navbar-search {
+        margin: 1rem 0;
+        max-width: 100%;
+      }
+      .navbar-search input {
+        width: 100%;
+      }
     }
     @media (max-width: 768px) {
       .product-section-title {
-        font-size: 2.2rem;
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
       }
       .card-title {
         font-size: 1.2rem;
@@ -228,17 +314,23 @@
       .product-card img {
         height: 180px;
       }
-      .navbar-brand img {
-        height: 42px !important;
-      }
       .btn-primary, .btn-secondary {
         padding: 0.6rem 1.5rem;
         font-size: 0.95rem;
       }
+      .footer .row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer .col-md-2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
     }
     @media (max-width: 576px) {
       .product-section-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
       }
       .product-card {
         margin-bottom: 2rem;
@@ -251,11 +343,20 @@
         font-size: 0.9rem;
       }
       .scroll-to-top {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        bottom: 20px;
-        right: 20px;
+        width: clamp(30px, 5vw, 50px);
+        height: clamp(30px, 5vw, 50px);
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        bottom: clamp(10px, 2vw, 20px);
+        right: clamp(10px, 2vw, 20px);
+      }
+      .footer {
+        padding: clamp(1rem, 3vw, 1.5rem) 0;
+      }
+      .footer-title {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+      }
+      .footer a {
+        font-size: clamp(0.7rem, 1.5vw, 0.85rem);
       }
     }
   </style>
@@ -263,31 +364,41 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#"><img src="images/logo..png" alt="GlobalLLC Logo" style="height:48px;"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="products.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Products
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-              <li><a class="dropdown-item" href="#beauty">Beauty</a></li>
-              <li><a class="dropdown-item" href="#kitchen-appliances">Kitchen Appliances</a></li>
-              <li><a class="dropdown-item" href="#man-wears">Man Wears</a></li>
-              <li><a class="dropdown-item" href="#electronics">Electronics</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item d-lg-none"><a class="nav-link" href="addtocart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
-        </ul>
-        <a href="addtocart.html" class="d-none d-lg-block ms-3 position-relative" style="display: inline-block; width: 52px; height: 52px;">
-          <span style="position: relative; display: inline-block; width: 52px; height: 52px;">
+    <div class="container d-flex justify-content-between align-items-center">
+      <!-- Left: Logo -->
+      <a class="navbar-brand" href="index.html"><img src="images/logo..png" alt="GlobalLLC Logo"></a>
+
+      <!-- Center: Menu -->
+      <div class="d-flex justify-content-center flex-grow-1">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="products.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-box"></i> Products</a>
+              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li><a class="dropdown-item" href="#beauty">Beauty</a></li>
+                <li><a class="dropdown-item" href="#kitchen-appliances">Kitchen Appliances</a></li>
+                <li><a class="dropdown-item" href="#man-wears">Man Wears</a></li>
+                <li><a class="dropdown-item" href="#electronics">Electronics</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: Search and Cart -->
+      <div class="d-flex align-items-center navbar-right">
+        <div class="navbar-search d-none d-lg-block">
+          <input type="text" id="searchInput" placeholder="Search products..." onkeypress="if(event.key === 'Enter') filterProducts()">
+          <i class="fas fa-search" onclick="filterProducts()"></i>
+        </div>
+        <a href="addtocart.html" class="ms-3 position-relative" style="display: inline-block; width: clamp(40px, 8vw, 52px); height: clamp(40px, 8vw, 52px);">
+          <span style="position: relative; display: inline-block; width: 100%; height: 100%;">
             <i class="fa-solid fa-cart-shopping"></i>
             <span id="cart-count" class="position-absolute badge rounded-pill">0</span>
           </span>
@@ -685,32 +796,85 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" style="background: #1a2a44; color: #d3e0ea; padding: clamp(2rem, 5vw, 4rem) 0; box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);">
     <div class="container">
       <div class="row mb-4">
-        <div class="col-md-4">
-          <div class="footer-title">About Global Scaleup LLC</div>
-          <p>Your one-stop shop for beauty, kitchen, and tech essentials.</p>
-        </div>
-        <div class="col-md-4">
-          <div class="footer-title">Quick Links</div>
+        <div class="col-md-2 col-6">
+          <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">CATEGORIES</div>
           <ul class="list-unstyled">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="products.html#beauty" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Beauty</a></li>
+            <li><a href="products.html#kitchen-appliances" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Kitchen</a></li>
+            <li><a href="products.html#beauty" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Cosmetic</a></li>
+            <li><a href="products.html#man-wears" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">New Arrivals</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
-          <div class="footer-title">Contact</div>
+        <div class="col-md-2 col-6">
+          <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">QUICK LINKS</div>
           <ul class="list-unstyled">
-            <li><a href="https://www.globalscaleupllc.com" target="_blank"><i class="fas fa-globe"></i> www.globalscaleupllc.com</a></li>
-            <li><a href="mailto:support@globalscaleupllc.com"><i class="fas fa-envelope"></i> info@globalscaleupllc.com</a></li>
-            <li><a href="tel:+17372831916"><i class="fas fa-phone"></i> +1737-283-1916</a></li>
+            <li><a href="index.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Home</a></li>
+            <li><a href="about.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">About</a></li>
+            <li><a href="products.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Products</a></li>
+            <li><a href="contact.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">SUPPORT</div>
+          <ul class="list-unstyled">
+            <li><a href="contact.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">FAQs</a></li>
+            <li><a href="addtocart.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Shipping</a></li>
+            <li><a href="addtocart.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">COMPANY</div>
+          <ul class="list-unstyled">
+            <li><a href="about.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">About Us</a></li>
+            <li><a href="about.html" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Our Mission</a></li>
+            <li><a href="#" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Careers</a></li>
+            <li><a href="#" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Press</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">CONTACT</div>
+          <ul class="list-unstyled" style="padding-left: 0;">
+            <li style="margin-bottom: 0.5rem;">
+              <a href="https://www.globalscaleupllc.com" target="_blank"
+                 style="display: flex; align-items: center; gap: 0.5rem; color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);"
+                 onmouseover="this.style.textDecoration='underline'"
+                 onmouseout="this.style.textDecoration='none'">
+                <i class="fas fa-globe" style="color: #60a5fa;"></i>
+                www.globalscaleupllc.com
+              </a>
+            </li>
+            <li style="margin-bottom: 0.5rem;">
+              <a href="mailto:support@globalscaleupllc.com"
+                 style="display: flex; align-items: center; gap: 0.5rem; color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);"
+                 onmouseover="this.style.textDecoration='underline'"
+                 onmouseout="this.style.textDecoration='none'">
+                <i class="fas fa-envelope" style="color: #60a5fa;"></i>
+                info@globalscaleupllc.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+17372831916"
+                 style="display: flex; align-items: center; gap: 0.5rem; color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem);"
+                 onmouseover="this.style.textDecoration='underline'"
+                 onmouseout="this.style.textDecoration='none'">
+                <i class="fas fa-phone" style="color: #60a5fa;"></i>
+                +1 737-283-1916
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      <p class="mb-0 text-center">© 2025 Global Scaleup LLC. All rights reserved.</p>
+      <hr>
+      <div class="d-flex justify-content-center align-items-center flex-wrap">
+        <div>
+          <span style="color: #d3e0ea; font-size: clamp(0.85rem, 1.5vw, 0.95rem); margin-right: 1rem;">© 2025 Global Scaleup LLC</span>
+          <a href="#" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem); margin-right: 1rem;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Terms</a>
+          <a href="#" style="color: #d3e0ea; text-decoration: none; font-size: clamp(0.85rem, 1.5vw, 0.95rem); margin-right: 1rem;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Privacy</a>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -724,7 +888,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+      duration: 800,
+      offset: 100
+    });
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -745,6 +912,64 @@
       });
     }
 
+    function filterProducts() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const products = [
+        { name: "Foundation", category: "beauty", url: "#beauty" },
+        { name: "Lipstick", category: "beauty", url: "#beauty" },
+        { name: "Concealer", category: "beauty", url: "#beauty" },
+        { name: "Face Powder", category: "beauty", url: "#beauty" },
+        { name: "Moisturizer Lotion", category: "beauty", url: "#beauty" },
+        { name: "Night Cream", category: "beauty", url: "#beauty" },
+        { name: "Blush On", category: "beauty", url: "#beauty" },
+        { name: "Mascara", category: "beauty", url: "#beauty" },
+        { name: "Hand Mixer", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Knife Set", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Juicer Blender", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Oven", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Plates Set", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Toaster", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Coffee Maker", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Rice Cooker", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Men's Denim Jacket", category: "man-wears", url: "#man-wears" },
+        { name: "Casual Cotton Shirt", category: "man-wears", url: "#man-wears" },
+        { name: "Shirts", category: "man-wears", url: "#man-wears" },
+        { name: "Regular Fit Jeans", category: "man-wears", url: "#man-wears" },
+        { name: "Casual Sneakers", category: "man-wears", url: "#man-wears" },
+        { name: "Stylish Wrist Watch", category: "man-wears", url: "#man-wears" },
+        { name: "Winter Hoodie", category: "man-wears", url: "#man-wears" },
+        { name: "Baseball Cap", category: "man-wears", url: "#man-wears" },
+        { name: "Microwave Oven", category: "electronics", url: "#electronics" },
+        { name: "Electric Kettle", category: "electronics", url: "#electronics" },
+        { name: "Toaster", category: "electronics", url: "#electronics" },
+        { name: "Blender Machine", category: "electronics", url: "#electronics" },
+        { name: "Electric Iron", category: "electronics", url: "#electronics" },
+        { name: "32'' LED TV", category: "electronics", url: "#electronics" },
+        { name: "Wireless Headphones", category: "electronics", url: "#electronics" },
+        { name: "Mini Air Cooler", category: "electronics", url: "#electronics" }
+      ];
+
+      const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchInput) ||
+        product.category.toLowerCase().includes(searchInput)
+      );
+
+      if (searchInput.length > 0) {
+        if (filteredProducts.length > 0) {
+          const firstMatch = filteredProducts[0];
+          window.location.href = firstMatch.url;
+        } else {
+          Swal.fire({
+            icon: 'info',
+            title: 'Not Found',
+            text: 'This product has not been launched yet.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       updateCartCount();
       document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
@@ -758,7 +983,6 @@
         });
       });
 
-      // Scroll to Top Button Visibility
       const scrollToTopBtn = document.querySelector('.scroll-to-top');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
