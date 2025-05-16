@@ -25,7 +25,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
 
- <style>
+<style>
   html,
 body {
   width: 100%;
@@ -645,6 +645,11 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   text-align: center;
   min-height: 200px;
+ 
+
+}
+.feature-box i {
+  color: #4d8bed;
 }
 
 .feature-box:hover {
@@ -663,6 +668,8 @@ body {
   padding: clamp(1rem, 2vw, 1.5rem);
   text-align: center;
   min-height: 220px;
+
+    transition: transform 0.3s ease;
 }
 
 .service-card:hover,
@@ -671,7 +678,10 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   border: 2px solid #60a5fa;
 }
-
+.stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+}
 .testimonial-card img {
   width: 75px;
   height: 75px;
@@ -765,6 +775,7 @@ body {
   text-decoration: underline;
 }
 
+
 @media (max-width: 576px) {
   .hero-section {
     padding: 40px 10px;
@@ -798,7 +809,12 @@ body {
     height: 200px;
   }
 }
+.feature-box, .service-card {
+  border-radius: 12px; /* Adjust this value as needed */
+}
+
  </style> 
+
 
 </head>
   <body>
@@ -825,9 +841,7 @@ body {
         <div class="collapse navbar-collapse" id="mainNavbar">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html" aria-current="page"
-                ><i class="fas fa-home"></i> Home</a
-              >
+              <a class="nav-link active" href="index.html" aria-current="page"><i class="fas fa-home"></i> Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html"
@@ -949,7 +963,7 @@ body {
     </section>
 
     <!-- Image Slider -->
-    <section class="image-slider my-4">
+    <section class="image-slider my-4 ">
       <div id="homeSlider" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -1291,111 +1305,109 @@ body {
     </div>
   </div>
 </section>
-
-    <!-- Why Shop With Us Section -->
-<section class="why-us-section" data-aos="fade-up" data-aos-duration="1200">
+<!-- Why Shop With Us Section -->
+<section class="why-us-section py-5" data-aos="fade-up" data-aos-duration="1200">
   <div class="container">
-    <h2 class="section-title">Why Shop With Us</h2>
+    <h2 class="section-title text-center mb-5 fs-1">Why Shop With Us</h2>
     <div class="row g-4">
+
       <div class="col-md-4 col-6">
-        <div class="feature-box" data-aos="zoom-in" data-aos-delay="100">
-          <i class="fas fa-star"></i>
-          <h4>Top Quality</h4>
-          <p>We offer high-grade products made to last with care.</p>
+        <div class="feature-box h-100 d-flex flex-column text-center p-4 shadow-sm rounded text-wrap" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-star fa-2x mb-3 text-primary"></i>
+          <h4 class="fw-semibold fs-6 fs-md-5">Top-Quality Products</h4>
+          <p class="mb-0 mt-auto fs-7 fs-md-6">Experience premium craftsmanship with every item we offer.</p>
         </div>
       </div>
+
       <div class="col-md-4 col-6">
-        <div class="feature-box" data-aos="zoom-in" data-aos-delay="200">
-          <i class="fas fa-truck"></i>
-          <h4>Quick Delivery</h4>
-          <p>Your orders arrive safely and quickly, every time.</p>
+        <div class="feature-box h-100 d-flex flex-column text-center p-4 shadow-sm rounded text-wrap" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-truck fa-2x mb-3 text-primary"></i>
+          <h4 class="fw-semibold fs-6 fs-md-5">Swift Delivery</h4>
+          <p class="mb-0 mt-auto fs-7 fs-md-6">Fast, dependable shipping that keeps you in the loop.</p>
         </div>
       </div>
+
       <div class="col-md-4 col-6">
-        <div class="feature-box" data-aos="zoom-in" data-aos-delay="300">
-          <i class="fas fa-headset"></i>
-          <h4>24/7 Help</h4>
-          <p>Our support team is available around the clock for you.</p>
+        <div class="feature-box h-100 d-flex flex-column text-center p-4 shadow-sm rounded text-wrap" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-headset fa-2x mb-3 text-primary"></i>
+          <h4 class="fw-semibold fs-6 fs-md-5">24/7 Support</h4>
+          <p class="mb-0 mt-auto fs-7 fs-md-6">Our dedicated team is always here to help you out.</p>
         </div>
       </div>
+
       <div class="col-md-4 col-6">
-        <div class="feature-box" data-aos="zoom-in" data-aos-delay="400">
-          <i class="fas fa-user-check"></i>
-          <h4>Best Picks</h4>
-          <p>Carefully selected items that match your daily needs.</p>
+        <div class="feature-box h-100 d-flex flex-column text-center p-4 shadow-sm rounded text-wrap" data-aos="zoom-in" data-aos-delay="400">
+          <i class="fas fa-user-check fa-2x mb-3 text-primary"></i>
+          <h4 class="fw-semibold fs-6 fs-md-5">Curated Selections</h4>
+          <p class="mb-0 mt-auto fs-7 fs-md-6">Carefully chosen products tailored to your needs.</p>
         </div>
       </div>
+
       <div class="col-md-4 col-6">
-        <div class="feature-box" data-aos="zoom-in" data-aos-delay="500">
-          <i class="fas fa-recycle"></i>
-          <h4>Eco Packs</h4>
-          <p>We use sustainable packaging that helps the planet.</p>
+        <div class="feature-box h-100 d-flex flex-column text-center p-4 shadow-sm rounded text-wrap" data-aos="zoom-in" data-aos-delay="500">
+          <i class="fas fa-recycle fa-2x mb-3 text-primary"></i>
+          <h4 class="fw-semibold fs-6 fs-md-5">Eco-Friendly Packaging</h4>
+          <p class="mb-0 mt-auto fs-7 fs-md-6">Sustainable materials that protect your order and the planet.</p>
         </div>
       </div>
+
       <div class="col-md-4 col-6">
-        <div class="feature-box" data-aos="zoom-in" data-aos-delay="600">
-          <i class="fas fa-shield-alt"></i>
-          <h4>Secure Buy</h4>
-          <p>Your data and payments are always fully protected.</p>
+        <div class="feature-box h-100 d-flex flex-column text-center p-4 shadow-sm rounded text-wrap" data-aos="zoom-in" data-aos-delay="600">
+          <i class="fas fa-shield-alt fa-2x mb-3 text-primary"></i>
+          <h4 class="fw-semibold fs-6 fs-md-5">Secure Checkout</h4>
+          <p class="mb-0 mt-auto fs-7 fs-md-6">Your data is safe with advanced encryption and security.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
-    <!-- Services Section -->
-  <section
-  class="services-section"
-  data-aos="fade-up"
-  data-aos-duration="1200"
->
+
+<!-- Services Section -->
+<section class="services-section py-5" data-aos="fade-up" data-aos-duration="1200">
   <div class="container">
-    <h2 class="section-title">Our Services</h2>
+    <h2 class="section-title text-center mb-5 fs-1">Our Services</h2>
     <div class="row g-4">
+
       <div class="col-md-3 col-6">
-        <div
-          class="service-card"
-          data-aos="fade-right"
-          data-aos-delay="100"
-        >
-          <i class="fa-solid fa-paint-brush"></i>
-          <h3 style="font-size: 1.2rem">Custom Design</h3>
-          <p style="font-size: 0.9rem">
-            Create personalized items with unique styles.
-          </p>
+        <div class="service-card h-100 d-flex flex-column text-center p-4 shadow-sm rounded" data-aos="fade-right" data-aos-delay="100">
+          <i class="fa-solid fa-paint-brush fa-2x mb-3" style="color: #60a5fa;"></i>
+          <h3 class="fs-5">Custom Items</h3>
+          <p class="mt-auto mb-0 small fs-6">Create unique, personal designs just for you.</p>
         </div>
       </div>
+
       <div class="col-md-3 col-6">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-          <i class="fa-solid fa-truck-fast"></i>
-          <h3 style="font-size: 1.2rem">Fast Delivery</h3>
-          <p style="font-size: 0.9rem">
-            Receive your orders quickly with tracking.
-          </p>
+        <div class="service-card h-100 d-flex flex-column text-center p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="200">
+          <i class="fa-solid fa-truck-fast fa-2x mb-3" style="color: #60a5fa;"></i>
+          <h3 class="fs-5">Fast Delivery</h3>
+          <p class="mt-auto mb-0 small fs-6">Quick delivery with easy tracking.</p>
         </div>
       </div>
+
       <div class="col-md-3 col-6">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-          <i class="fa-solid fa-headset"></i>
-          <h3 style="font-size: 1.2rem">24/7 Help</h3>
-          <p style="font-size: 0.9rem">
-            Our support team is always here to help.
-          </p>
+        <div class="service-card h-100 d-flex flex-column text-center p-4 shadow-sm rounded" data-aos="fade-up" data-aos-delay="300">
+          <i class="fa-solid fa-headset fa-2x mb-3" style="color: #60a5fa;"></i>
+          <h3 class="fs-5">24/7 Support</h3>
+          <p class="mt-auto mb-0 small fs-6">Help available anytime you need it.</p>
         </div>
       </div>
+
       <div class="col-md-3 col-6">
-        <div class="service-card" data-aos="fade-left" data-aos-delay="400">
-          <i class="fa-solid fa-shield-alt"></i>
-          <h3 style="font-size: 1.2rem">Safe Payment</h3>
-          <p style="font-size: 0.9rem">
-            Pay safely with trusted and secure options.
-          </p>
+        <div class="service-card h-100 d-flex flex-column text-center p-4 shadow-sm rounded" data-aos="fade-left" data-aos-delay="400">
+          <i class="fa-solid fa-shield-alt fa-2x mb-3" style="color: #60a5fa;"></i>
+          <h3 class="fs-5">Safe Payment</h3>
+          <p class="mt-auto mb-0 small fs-6">Secure payment options for your safety.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+
 
     <!-- Promotional Banner Section -->
     <section class="promo-section" data-aos="fade-up" data-aos-duration="1200">
@@ -1410,7 +1422,7 @@ body {
     </section>
 
     <!-- Testimonials Section -->
-    <section
+    <!-- <section
       class="testimonials-section"
       data-aos="fade-up"
       data-aos-duration="1200"
@@ -1458,7 +1470,7 @@ body {
                     <h5>- John, Loyal Customer</h5>
                   </div>
                 </div>
-                <div class="col-md-4 col-12 d-none d-md-block">
+                <div class="col-md-4 col-12">
                   <div
                     class="testimonial-card"
                     data-aos="fade-up"
@@ -1494,7 +1506,7 @@ body {
                     <h5>- Alex, Returning Customer</h5>
                   </div>
                 </div>
-                <div class="col-md-4 col-12 d-none d-md-block">
+                <div class="col-md-4 col-12 ">
                   <div
                     class="testimonial-card"
                     data-aos="fade-up"
@@ -1510,7 +1522,7 @@ body {
                     <h5>- Nina, Satisfied Buyer</h5>
                   </div>
                 </div>
-                <div class="col-md-4 col-12 d-none d-md-block">
+                <div class="col-md-4 col-12">
                   <div
                     class="testimonial-card"
                     data-aos="fade-up"
@@ -1549,7 +1561,89 @@ body {
           </button>
         </div>
       </div>
-    </section>
+    </section> -->
+
+
+    <!-- Testimonials Section -->
+<section class="testimonials-section py-5" data-aos="fade-up" data-aos-duration="1200">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">What Our Customers Say</h2>
+
+    <!-- Desktop View -->
+    <div class="d-none d-md-block">
+      <div class="row justify-content-center">
+        <!-- Testimonial 1 -->
+        <div class="col-md-4">
+          <div class="testimonial-card h-100 d-flex flex-column align-items-center text-center p-4 shadow rounded">
+            <img class="mb-3 rounded-circle" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" alt="Sarah" loading="lazy" />
+            <div class="stars mb-2">★★★★★</div>
+            <p class="flex-grow-1">"Top-quality products and lightning-fast delivery!"</p>
+            <h5 class="mt-3">- Sarah, Happy Customer</h5>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="col-md-4">
+          <div class="testimonial-card h-100 d-flex flex-column align-items-center text-center p-4 shadow rounded">
+            <img class="mb-3 rounded-circle" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="John" loading="lazy" />
+            <div class="stars mb-2">★★★★☆</div>
+            <p class="flex-grow-1">"Amazing experience, great customer service!"</p>
+            <h5 class="mt-3">- John, Loyal Customer</h5>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="col-md-4">
+          <div class="testimonial-card h-100 d-flex flex-column align-items-center text-center p-4 shadow rounded">
+            <img class="mb-3 rounded-circle" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="Emma" loading="lazy" />
+            <div class="stars mb-2">★★★★★</div>
+            <p class="flex-grow-1">"High-quality products, friendly service."</p>
+            <h5 class="mt-3">- Emma, Satisfied Buyer</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Carousel View -->
+    <div class="d-md-none">
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="testimonial-card d-flex flex-column align-items-center text-center p-4 shadow rounded mx-3">
+              <img class="mb-3 rounded-circle" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" alt="Sarah" loading="lazy" />
+              <div class="stars mb-2">★★★★★</div>
+              <p>"Top-quality products and lightning-fast delivery!"</p>
+              <h5 class="mt-3">- Sarah, Happy Customer</h5>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="testimonial-card d-flex flex-column align-items-center text-center p-4 shadow rounded mx-3">
+              <img class="mb-3 rounded-circle" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="John" loading="lazy" />
+              <div class="stars mb-2">★★★★☆</div>
+              <p>"Amazing experience, great customer service!"</p>
+              <h5 class="mt-3">- John, Loyal Customer</h5>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="testimonial-card d-flex flex-column align-items-center text-center p-4 shadow rounded mx-3">
+              <img class="mb-3 rounded-circle" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="Emma" loading="lazy" />
+              <div class="stars mb-2">★★★★★</div>
+              <p>"High-quality products, friendly service."</p>
+              <h5 class="mt-3">- Emma, Satisfied Buyer</h5>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Blog Highlights Section -->
   
