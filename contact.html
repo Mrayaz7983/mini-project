@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Global Scaleup LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+  html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+         height: auto;
+    }
+    
+  body {
+      font-family: "Inter", sans-serif;
+      background-image: linear-gradient(to right top, #f2f6f7, #eef7f9, #eaf9fb, #e5fafc, #e1fcfc, #cef0f1, #bae3e6, #a7d7db, #81bac5, #5d9db0, #39809c, #0b6488);
+      background-size: cover;
+      background-attachment: fixed;
+      color: #1f2937;
+      /* min-height: 100%; */
+    
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1140px;
+      padding: 0 15px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand img {
+      height: clamp(36px, 8vw, 48px);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+    }
+
+    .nav-link {
+      color: #1e40af !important;
+      font-weight: 600;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #60a5fa !important;
+    }
+
+    .dropdown-menu {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-item {
+      color: #1f2937;
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      color: #60a5fa;
+      background: #f1f5f9;
+    }
+
+    .navbar-search {
+      position: relative;
+      max-width: clamp(200px, 25vw, 300px);
+      margin: 0.5rem 0;
+    }
+
+    .navbar-search input {
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border: 2px solid #d1d5db;
+      border-radius: 20px;
+      font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar-search input:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25);
+      outline: none;
+    }
+
+    .navbar-search i {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #1e40af;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      cursor: pointer;
+    }
+
+    .cart-icon {
+      position: relative;
+      display: inline-block;
+      width: clamp(40px, 8vw, 52px);
+      height: clamp(40px, 8vw, 52px);
+    }
+
+    #cart-count {
+      position: absolute;
+      top: 10%;
+      left: 70%;
+      background: #1e40af;
+      color: #ffffff;
+      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+      min-width: 22px;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      animation: bounce 1.5s infinite;
+    }
+
+    #cart-count-mobile {
+      background: #1e40af;
+      color: #ffffff;
+      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+      min-width: 22px;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      animation: bounce 1.5s infinite;
+    }
+
+    .fa-cart-shopping {
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      color: #1e40af;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .fa-cart-shopping:hover {
+      color: #60a5fa;
+      transform: scale(1.2);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(90deg, #1e40af 0%, #60a5fa 100%);
+      border: none;
+      border-radius: 30px;
+      padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 3vw, 2rem);
+      font-weight: 600;
+      color: #ffffff;
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #60a5fa 0%, #1e40af 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Contact-specific Styles */
+    .contact-form-section {
+      max-width: 1200px;
+      /* margin: clamp(20px, 5vw, 40px) auto; */
+           padding: clamp(1rem, 3vw, 2rem);
+      margin: 8rem  auto;
+      /* padding: 3rem auto; */
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+ 
+      
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: clamp(1rem, 2vw, 3rem);
+      background: linear-gradient(90deg, #1e40af 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      margin: 0.5rem auto 0;
+      width: clamp(60px, 8vw, 100px);
+      height: 4px;
+      border-radius: 3px;
+      background: #60a5fa;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: clamp(10px, 2vw, 20px);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(0.5rem, 1.5vw, 1rem);
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25);
+      outline: none;
+    }
+
+    .contact-form textarea {
+      grid-column: 1 / -1;
+      resize: vertical;
+      min-height: clamp(100px, 15vw, 150px);
+    }
+
+    #result {
+      text-align: center;
+      margin-top: clamp(0.5rem, 1vw, 1rem);
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      color: #1e40af;
+    }
+
+    .result.error {
+      color: #ef4444;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: clamp(15px, 2vw, 30px);
+      margin-top: clamp(2rem, 3vw, 3rem);
+    }
+
+    .contact-info-box {
+      background: #e0f3fa;
+      padding: clamp(10px, 2vw, 20px);
+      border-radius: 15px;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      text-align: center;
+    }
+
+    .contact-info-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border: 2px solid #60a5fa;
+    }
+
+    .contact-info-box i {
+      color: #1e40af;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: clamp(0.5rem, 1vw, 1rem);
+    }
+
+    .contact-info-box h4 {
+      color: #1e40af;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      margin-bottom: clamp(0.5rem, 1vw, 10px);
+    }
+
+    .contact-info-box p,
+    .contact-info-box a {
+      color: #1f2937;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info-box a:hover {
+      color: #60a5fa;
+    }
+
+
+    hr {
+      border-color: rgba(255, 255, 255, 0.2);
+      margin: clamp(1.5rem, 3vw, 2rem) 0;
+    }
+
+    .terms-row {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+    }
+
+    .terms-row .footer-link {
+      margin: 0 clamp(0.5rem, 1vw, 0.75rem);
+    }
+
+    .terms-row .company-name {
+      font-weight: 700;
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+    }
+
+    /* Scroll to Top */
+    .scroll-to-top {
+      position: fixed;
+      bottom: clamp(20px, 5vw, 30px);
+      right: clamp(20px, 3vw, 30px);
+      background: linear-gradient(45deg, #1e40af, #60a5fa);
+      color: #ffffff;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.5rem, 3vw, 1.8rem);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive Styles */
+    /* @media (max-width: 991px) {
+ 
+      .navbar {
+        padding: 0.5rem 0;
+      }
+      .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #ffffff;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        z-index: 1000;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: left;
+      }
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+      }
+      .nav-link i {
+        margin-right: 0.5rem;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      }
+      .navbar-search {
+        max-width: 100%;
+      }
+      .cart-nav-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .cart-nav-item #cart-count-mobile {
+        position: static;
+        margin-left: 0.5rem;
+      }
+      .footer-section {
+        width: 50%;
+      }
+    } */
+
+  @media (max-width: 991px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1000;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    text-align: left;
+    width: auto;
+  }
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+  }
+  .nav-link i {
+    margin-right: 0.5rem;
+  }
+  .navbar-search {
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+  .cart-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .cart-nav-item #cart-count {
+    position: static;
+    margin-left: 0.5rem;
+  }
+      .cart-nav-item #cart-count-mobile {
+        position: static;
+        margin-left: 0.5rem;
+      }
+      .footer-section {
+        width: 50%;
+      }
+}
+  
+
+    @media (max-width: 768px) {
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+      .section-title {
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
+      }
+      .contact-form input,
+      .contact-form textarea {
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+        padding: clamp(0.4rem, 1.5vw, 0.7rem);
+      }
+      .btn-primary {
+        padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(1rem, 3vw, 1.5rem);
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+      }
+      .contact-info-box h4 {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      }
+      .contact-info-box p,
+      .contact-info-box a {
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+      }
+      footer {
+        padding: clamp(2rem, 4vw, 3rem) 0 clamp(1rem, 2vw, 1.5rem);
+      }
+      .footer-section {
+        width: 100%;
+        text-align: center;
+      }
+      .footer-contact-link {
+        justify-content: center;
+      }
+      .terms-row {
+        flex-direction: column;
+        gap: clamp(0.5rem, 1vw, 0.75rem);
+      }
+      .terms-row .footer-link {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .contact-form-section {
+        margin: clamp(10px, 3vw, 20px);
+        padding: clamp(1rem, 2vw, 1.5rem);
+      }
+      .section-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+      }
+      .contact-form input,
+      .contact-form textarea {
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        padding: clamp(0.3rem, 1.5vw, 0.6rem);
+      }
+      .btn-primary {
+        padding: clamp(0.3rem, 1.5vw, 0.5rem) clamp(0.8rem, 2vw, 1.2rem);
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+      }
+      .contact-info-box {
+        padding: clamp(10px, 2vw, 15px);
+      }
+      .contact-info-box i {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+      }
+      .contact-info-box h4 {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+      }
+      .contact-info-box p,
+      .contact-info-box a {
+        font-size: clamp(0.8rem, 2vw, 0.95rem);
+      }
+      .navbar {
+        padding: 0.7rem 0;
+      }
+      .container {
+        padding: 0 10px;
+      }
+      .navbar-search input {
+        font-size: 0.85rem;
+      }
+      .fa-cart-shopping {
+        font-size: 1.8rem;
+      }
+      #cart-count, #cart-count-mobile {
+        font-size: 0.8rem;
+        min-width: 18px;
+        min-height: 18px;
+      }
+      .footer-title {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+      }
+      .footer-link,
+      .footer-contact-link {
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+      }
+      .footer-contact-link i {
+        font-size: clamp(0.9rem, 1.6vw, 1rem);
+      }
+      .terms-row {
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      }
+      .terms-row .company-name {
+        font-size: clamp(1rem, 1.8vw, 1.1rem);
+      }
+      .scroll-to-top {
+        width: clamp(40px, 6vw, 50px);
+        height: clamp(40px, 6vw, 50px);
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .navbar {
+        padding: 0.6rem 0;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+      }
+      .navbar-search input {
+        padding: 0.4rem 2rem 0.4rem 0.8rem;
+      }
+      .navbar-search i {
+        font-size: 0.85rem;
+        right: 0.8rem;
+      }
+      .cart-icon {
+        width: 40px;
+        height: 40px;
+      }
+      .fa-cart-shopping {
+        font-size: 1.6rem;
+      }
+      #cart-count, #cart-count-mobile {
+        font-size: 0.75rem;
+        min-width: 16px;
+        min-height: 16px;
+      }
+      .footer-title {
+        font-size: clamp(0.95rem, 1.8vw, 1rem);
+      }
+      .footer-link,
+      .footer-contact-link {
+        font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+      }
+      .footer-contact-link i {
+        font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+      }
+      .terms-row {
+        gap: clamp(0.3rem, 0.8vw, 0.5rem);
+      }
+    .scroll-to-top{
+      bottom: 2.3rem;
+    }
+    }
+    /* Footer base styles */
+.footer-title {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  color: #60a5fa; /* Blue heading color */
+  margin-bottom: 1rem;
+}
+
+/* Footer link styles */
+.footer-link {
+  color: #ffffff; /* White color for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #60a5fa; /* Blue on hover */
+}
+
+/* Footer contact link styles (website, email, phone) */
+.footer-contact-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact-link:hover {
+  color: #60a5fa;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo..png" alt="GlobalLLC Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="products.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-box"></i> Products</a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item" href="products.html#beauty">Beauty</a></li>
+              <li><a class="dropdown-item" href="products.html#kitchen-appliances">Kitchen Appliances</a></li>
+              <li><a class="dropdown-item" href="products.html#man-wears">Man Wears</a></li>
+              <li><a class="dropdown-item" href="products.html#electronics">Electronics</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="contact.html" aria-current="page"><i class="fas fa-envelope"></i> Contact</a>
+          </li>
+          <li class="nav-item navbar-search d-lg-none">
+            <input type="text" id="searchInputMobile" placeholder="Search products..." onkeypress="if(event.key === 'Enter') filterProducts()">
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </li>
+          <li class="nav-item cart-nav-item d-lg-none">
+            <a href="addtocart.html" class="nav-link">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count-mobile" class="badge rounded-pill">0</span>
+            </a>
+          </li>
+        </ul>
+        <div class="navbar-right d-none d-lg-flex align-items-center">
+          <div class="navbar-search">
+            <input type="text" id="searchInput" placeholder="Search products..." onkeypress="if(event.key === 'Enter') filterProducts()">
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </div>
+          <a href="addtocart.html" class="cart-icon ms-3">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="badge rounded-pill">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form-section" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="section-title">Contact Us</h2>
+    <form id="form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="7d67b7fd-9db4-46a2-868b-0b62c12fec79">
+      <div class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+    </form>
+    <div id="result"></div>
+
+    <!-- Contact Information Section -->
+    <div class="contact-info" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+      <div class="contact-info-box" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-phone"></i>
+        <h4>Phone</h4>
+        <a href="tel:+17372831916">+1737-283-1916</a>
+      </div>
+      <div class="contact-info-box" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <a href="mailto:info@globalscaleupllc.com">info@globalscaleupllc.com</a>
+      </div>
+      <div class="contact-info-box" data-aos="fade-up" data-aos-delay="300">
+        <i class="fas fa-globe"></i>
+        <h4>Website</h4>
+        <a href="https://www.globalscaleupllc.com" target="_blank">www.globalscaleupllc.com</a>
+      </div>
+      <div class="contact-info-box" data-aos="fade-up" data-aos-delay="400">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>Our Mailing Address</h4>
+        <p>5900 BALCONES DR STE 23938 AUSTIN TX USA</p>
+      </div>
+    </div>
+  </section>
+   <!-- Footer -->
+<footer
+  style="
+    background: #1a2a44;
+    color: #d3e0ea;
+    padding: 2rem 0 1rem 0;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+  "
+>
+  <div class="container">
+    <div class="row mb-4 gy-4">
+      <!-- CATEGORIES -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">CATEGORIES</div>
+        <ul class="list-unstyled">
+          <li><a href="products.html#beauty" class="footer-link">Beauty</a></li>
+          <li><a href="products.html#kitchen-appliances" class="footer-link">Kitchen</a></li>
+          <li><a href="products.html#beauty" class="footer-link">Cosmetic</a></li>
+          <li><a href="products.html#man-wears" class="footer-link">New Arrivals</a></li>
+        </ul>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title">QUICK LINKS</div>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="products.html" class="footer-link">Products</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title">SUPPORT</div>
+        <ul class="list-unstyled">
+          <li><a href="contact.html" class="footer-link">FAQs</a></li>
+          <li><a href="addtocart.html" class="footer-link">Shipping</a></li>
+          <li><a href="addtocart.html" class="footer-link">Returns</a></li>
+        </ul>
+      </div>
+
+      <!-- COMPANY -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title">COMPANY</div>
+        <ul class="list-unstyled">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="about.html" class="footer-link">Our Mission</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-12 col-sm-8 col-md-4">
+        <div class="footer-title">CONTACT</div>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href="https://www.globalscaleupllc.com" target="_blank" class="footer-contact-link">
+              <i class="fas fa-globe text-primary"></i> www.globalscaleupllc.com
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="mailto:support@globalscaleupllc.com" class="footer-contact-link">
+              <i class="fas fa-envelope text-primary"></i> info@globalscaleupllc.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+17372831916" class="footer-contact-link">
+              <i class="fas fa-phone text-primary"></i> +1 737-283-1916
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr style="border-color: rgba(255, 255, 255, 0.2);" />
+
+    <!-- Terms Row -->
+    <div class="row justify-content-center text-center">
+      <div class="col-12 d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+        <!-- Text Links -->
+        <a href="#" class="footer-link" style="font-weight: bolder; font-size: 1.25rem;">Global Scaleup LLC</a>
+        <a href="#" class="footer-link fw-semibold mx-2">All Rights Reserved</a>
+        <!-- Terms Links -->
+        <div>
+          <a href="#" class="footer-link fw-semibold mx-2">Terms and Conditions</a>
+          <a href="#" class="footer-link fw-semibold mx-2">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      offset: 100
+    });
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.querySelectorAll('#cart-count, #cart-count-mobile').forEach(el => el.textContent = cart.length);
+    }
+
+    function filterProducts() {
+      const searchInput = document.getElementById('searchInput')?.value.toLowerCase() || document.getElementById('searchInputMobile')?.value.toLowerCase();
+      const products = [
+        { name: "Foundation", category: "beauty", url: "products.html#beauty" },
+        { name: "Lipstick", category: "beauty", url: "products.html#beauty" },
+        { name: "Concealer", category: "beauty", url: "products.html#beauty" },
+        { name: "Face Powder", category: "beauty", url: "products.html#beauty" },
+        { name: "Moisturizer Lotion", category: "beauty", url: "products.html#beauty" },
+        { name: "Night Cream", category: "beauty", url: "products.html#beauty" },
+        { name: "Blush On", category: "beauty", url: "products.html#beauty" },
+        { name: "Mascara", category: "beauty", url: "products.html#beauty" },
+        { name: "Hand Mixer", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Knife Set", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Juicer Blender", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Oven", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Plates Set", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Toaster", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Coffee Maker", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Rice Cooker", category: "kitchen", url: "products.html#kitchen-appliances" },
+        { name: "Men's Denim Jacket", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Casual Cotton Shirt", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Shirts", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Regular Fit Jeans", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Casual Sneakers", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Stylish Wrist Watch", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Winter Hoodie", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Baseball Cap", category: "man-wears", url: "products.html#man-wears" },
+        { name: "Microwave Oven", category: "electronics", url: "products.html#electronics" },
+        { name: "Electric Kettle", category: "electronics", url: "products.html#electronics" },
+        { name: "Toaster", category: "electronics", url: "products.html#electronics" },
+        { name: "Blender Machine", category: "electronics", url: "products.html#electronics" },
+        { name: "Electric Iron", category: "electronics", url: "products.html#electronics" },
+        { name: "32'' LED TV", category: "electronics", url: "products.html#electronics" },
+        { name: "Wireless Headphones", category: "electronics", url: "products.html#electronics" },
+        { name: "Mini Air Cooler", category: "electronics", url: "products.html#electronics" }
+      ];
+
+      if (searchInput?.length > 0) {
+        const filteredProducts = products.filter(
+          product =>
+            product.name.toLowerCase().includes(searchInput) ||
+            product.category.toLowerCase().includes(searchInput)
+        );
+        if (filteredProducts.length > 0) {
+          const firstMatch = filteredProducts[0];
+          window.location.href = firstMatch.url;
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Product not launched',
+            text: 'This product has not been launched yet.',
+            confirmButtonText: 'OK',
+          });
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartCount();
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+
+      const form = document.getElementById('form');
+      const result = document.getElementById('result');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        result.innerHTML = "Please wait...";
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            result.innerHTML = "Form submitted successfully";
+            result.classList.remove('error');
+          } else {
+            console.log(response);
+            result.innerHTML = json.message;
+            result.classList.add('error');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          result.innerHTML = "Something went wrong!";
+          result.classList.add('error');
+        })
+        .then(function() {
+          form.reset();
+          setTimeout(() => {
+            result.style.display = "none";
+          }, 3000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

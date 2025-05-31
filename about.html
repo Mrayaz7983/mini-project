@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Global Scaleup LLC</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-image: linear-gradient(
+          to right top,
+          #f2f6f7,
+          #eef7f9,
+          #eaf9fb,
+          #e5fafc,
+          #e1fcfc,
+          #cef0f1,
+          #bae3e6,
+          #a7d7db,
+          #81bac5,
+          #5d9db0,
+          #39809c,
+          #0b6488
+        );
+        color: #1f2937;
+      }
+
+      .container {
+        max-width: 1140px;
+        padding: 0 15px;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      /* Button Styles */
+      .btn-primary {
+        background: linear-gradient(90deg, #1e40af 0%, #60a5fa 100%);
+        border: none;
+        border-radius: 30px;
+        padding: 0.8rem 2.2rem;
+        font-weight: 600;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        color: #ffffff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(90deg, #60a5fa 0%, #1e40af 100%);
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* About-specific Styles */
+      .about-hero {
+        background: linear-gradient(
+            135deg,
+            rgba(30, 64, 175, 0.8),
+            rgba(96, 165, 250, 0.8)
+          ),
+          url("https://images.unsplash.com/photo-1556740738-6b4d43f81b8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            center/cover no-repeat;
+        color: #ffffff;
+        padding: 120px 20px;
+        text-align: center;
+        position: relative;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .about-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 3.8rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .about-hero p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        max-width: 800px;
+        margin: auto;
+        opacity: 0.9;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .section {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(90deg, #1e40af 0%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        margin: 1rem auto 0;
+        width: 100px;
+        height: 6px;
+        border-radius: 3px;
+        background: #60a5fa;
+      }
+
+      .section p {
+        line-height: 1.8;
+        color: #1f2937;
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        text-align: center;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .values,
+      .features,
+      .team,
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .value-box,
+      .feature-box,
+      .team-member,
+      .testimonial-box {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 20px;
+        border: 2px solid transparent;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        text-align: center;
+      }
+
+      .value-box:hover,
+      .feature-box:hover,
+      .team-member:hover,
+      .testimonial-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border: 2px solid #60a5fa;
+      }
+
+      .value-box h4,
+      .feature-box h4,
+      .team-member h4,
+      .testimonial-box h4 {
+        color: #1e40af;
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .value-box i,
+      .feature-box i {
+        color: #60a5fa;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .value-box p,
+      .feature-box p,
+      .team-member p,
+      .testimonial-box p {
+        color: #1f2937;
+        font-size: clamp(0.85rem, 2vw, 1rem);
+        line-height: 1.6;
+      }
+
+      .team-member img {
+        width: clamp(100px, 20vw, 140px);
+        height: clamp(100px, 20vw, 140px);
+        border-radius: 50%;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .team-member:hover img {
+        transform: scale(1.1);
+      }
+
+      .team-member .role {
+        color: #60a5fa;
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .testimonial-box i {
+        color: #60a5fa;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .testimonial-box .stars {
+        color: #ffd700;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background: #60a5fa;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin: 20px 0;
+        width: 50%;
+        padding: 20px;
+      }
+
+      .timeline-item.left {
+        left: 0;
+        text-align: right;
+      }
+
+      .timeline-item.right {
+        left: 50%;
+        text-align: left;
+      }
+
+      .timeline-item .dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #1e40af;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .timeline-item.left .dot {
+        right: -10px;
+      }
+
+      .timeline-item.right .dot {
+        left: -10px;
+      }
+
+      .timeline-item .content {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .community-section {
+        background: url("https://images.unsplash.com/photo-1593113598332-cd84a1a4a813?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          center/cover no-repeat;
+        padding: 80px 20px;
+        color: #ffffff;
+        text-align: center;
+        position: relative;
+      }
+
+      .community-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(30, 64, 175, 0.7),
+          rgba(96, 165, 250, 0.7)
+        );
+        z-index: 1;
+      }
+
+      .community-section .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Scroll to Top */
+      .scroll-to-top {
+        position: fixed;
+        bottom: clamp(20px, 5vw, 30px);
+        right: clamp(20px, 3vw, 30px);
+        background: linear-gradient(45deg, #1e40af, #60a5fa);
+        color: #ffffff;
+        width: clamp(50px, 8vw, 60px);
+        height: clamp(50px, 8vw, 60px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: clamp(1.5rem, 3vw, 1.8rem);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Footer base styles */
+       footer {
+        padding: clamp(2rem, 4vw, 3rem) 0 clamp(1rem, 2vw, 1.5rem);
+        background: #1f2937;
+        color: #ffffff;
+      }
+
+      .footer-section {
+        text-align: left;
+      } 
+      .footer-title {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-weight: 600;
+        color: #60a5fa;
+        margin-bottom: 1rem;
+      }
+
+      .footer-link,
+      .footer-contact-link {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-link:hover,
+      .footer-contact-link:hover {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+
+      .footer-contact-link i {
+        margin-right: 0.5rem;
+        font-size: clamp(0.9rem, 1.6vw, 1rem);
+        color: #60a5fa;
+      }
+
+      hr {
+        border-color: rgba(255, 255, 255, 0.2);
+        margin: clamp(1.5rem, 3vw, 2rem) 0;
+      }
+
+      .terms-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(0.9rem, 1.6vw, 1rem);
+        flex-wrap: wrap;
+      }
+
+      .terms-row .footer-link {
+        margin: 0 clamp(0.5rem, 1vw, 0.75rem);
+      }
+
+      .terms-row .company-name {
+        font-weight: 700;
+        font-size: clamp(1.1rem, 2vw, 1.25rem);
+      }
+
+      .navbar {
+        background: #ffffff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+      }
+
+      .navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .navbar-brand img {
+        height: clamp(36px, 8vw, 48px);
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-brand img:hover {
+        transform: scale(1.1);
+      }
+
+      .navbar-nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .nav-link {
+        color: #1e40af !important;
+        font-weight: 600;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #60a5fa !important;
+      }
+
+      .dropdown-menu {
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .dropdown-item {
+        color: #1f2937;
+        font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+        transition: color 0.3s ease, background 0.3s ease;
+      }
+
+      .dropdown-item:hover {
+        color: #60a5fa;
+        background: #f1f5f9;
+      }
+
+      .navbar-search {
+        position: relative;
+        max-width: clamp(200px, 25vw, 300px);
+        margin-left: 1rem;
+      }
+
+      .navbar-search input {
+        padding: 0.5rem 2.5rem 0.5rem 1rem;
+        border: 2px solid #d1d5db;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+        width: 100%;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .navbar-search input:focus {
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25);
+        outline: none;
+      }
+
+      .navbar-search i {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #1e40af;
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        cursor: pointer;
+      }
+
+      #cart-count {
+        background: #1e40af;
+        color: #ffffff;
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+        min-width: 22px;
+        min-height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        animation: bounce 1.5s infinite;
+      }
+
+      .fa-cart-shopping {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+        color: #1e40af;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .fa-cart-shopping:hover {
+        color: #60a5fa;
+        transform: scale(1.2);
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .navbar-toggler {
+        border: none;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .navbar-right {
+        display: flex;
+        align-items: center;
+      }
+
+      @media (max-width: 991px) {
+        .navbar {
+          padding: 0.5rem 0;
+        }
+        .navbar-collapse {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background: #ffffff;
+          width: 200px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          padding: 1rem;
+          z-index: 1000;
+        }
+        .navbar-nav {
+          flex-direction: column;
+          text-align: left;
+          width: auto;
+        }
+        .nav-item {
+          margin: 0.5rem 0;
+        }
+        .nav-link {
+          display: flex;
+          align-items: center;
+        }
+        .nav-link i {
+          margin-right: 0.5rem;
+        }
+        .navbar-search {
+          margin: 1rem 0;
+          max-width: 100%;
+        }
+        .cart-nav-item {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+        .cart-nav-item #cart-count {
+          position: static;
+          margin-left: 0.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .about-hero {
+          padding: 80px 15px;
+          min-height: 300px;
+        }
+        .about-hero h1 {
+          font-size: clamp(2rem, 5vw, 2.5rem);
+        }
+        .about-hero p {
+          font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        .section {
+          padding: 40px 15px;
+        }
+        .section-title {
+          font-size: clamp(1.8rem, 4vw, 2.2rem);
+        }
+        .section p {
+          font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        .value-box h4,
+        .feature-box h4,
+        .team-member h4,
+        .testimonial-box h4 {
+          font-size: clamp(1.2rem, 3vw, 1.4rem);
+        }
+        .value-box p,
+        .feature-box p,
+        .team-member p,
+        .testimonial-box p {
+          font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+        .team-member img {
+          width: clamp(80px, 15vw, 120px);
+          height: clamp(80px, 15vw, 120px);
+        }
+        .timeline::before {
+          left: 20px;
+        }
+        .timeline-item {
+          width: 100%;
+          left: 0 !important;
+          text-align: left;
+          padding-left: 50px;
+        }
+        .timeline-item .dot {
+          left: 10px !important;
+          right: auto !important;
+        }
+        .row.mb-4.gy-4 {
+          flex-direction: column;
+          align-items: center;
+        }
+        .col-6.col-sm-4.col-md-2,
+        .col-12.col-sm-8.col-md-4 {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+        footer {
+          padding: clamp(2rem, 4vw, 3rem) 0 clamp(1rem, 2vw, 1.5rem);
+        }
+        .footer-section {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: clamp(1rem, 2vw, 1.5rem);
+          text-align: center;
+        }
+        .footer-contact-link {
+          justify-content: center;
+          display: flex;
+          align-items: center;
+        }
+        .terms-row {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: clamp(0.5rem, 1vw, 0.75rem);
+        }
+        .terms-row .footer-link {
+          margin: 0 clamp(0.5rem, 1vw, 0.75rem);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .container {
+          padding: 0 10px;
+        }
+        .section-title {
+          font-size: clamp(1.5rem, 4vw, 1.8rem);
+        }
+        .value-box,
+        .feature-box,
+        .team-member,
+        .testimonial-box {
+          padding: 20px;
+        }
+        .timeline-item h4 {
+          font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+        .timeline-item p {
+          font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+        .scroll-to-top {
+          width: clamp(40px, 6vw, 50px);
+          height: clamp(40px, 6vw, 50px);
+          font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        }
+        .cart-float {
+          bottom: 80px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+        }
+        .navbar {
+          padding: 0.7rem 0;
+        }
+        .navbar-collapse {
+          width: 100%;
+        }
+        .fa-cart-shopping {
+          font-size: 1.8rem;
+        }
+        #cart-count {
+          font-size: 0.8rem;
+          min-width: 18px;
+          min-height: 18px;
+        }
+        .footer-section {
+          grid-template-columns: repeat(2, 1fr);
+          gap: clamp(0.75rem, 1.5vw, 1rem);
+        }
+        .footer-title {
+          font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+        .footer-link,
+        .footer-contact-link {
+          font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+          margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+        }
+        .footer-contact-link i {
+          font-size: clamp(0.9rem, 1.6vw, 1rem);
+        }
+        .terms-row {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: clamp(0.5rem, 1vw, 0.75rem);
+        }
+        .terms-row .company-name {
+          font-size: clamp(1rem, 1.8vw, 1.1rem);
+        }
+      }
+
+      @media (max-width: 400px) {
+        .navbar {
+          padding: 0.6rem 0;
+        }
+        .navbar-brand img {
+          height: 32px;
+        }
+        .fa-cart-shopping {
+          font-size: 1.6rem;
+        }
+        .cart-float {
+          margin-bottom: 2.8rem;
+          width: 30%;
+          height: 30%;
+        }
+        .scroll-to-top {
+          margin-bottom: 3rem;
+          width: 10%;
+          height: 8%;
+        }
+        #cart-count {
+          font-size: 0.75rem;
+          min-width: 16px;
+          min-height: 16px;
+        }
+        .footer-section {
+          grid-template-columns: 1fr;
+          gap: clamp(0.5rem, 1vw, 0.75rem);
+        }
+        .footer-title {
+          font-size: clamp(0.95rem, 1.8vw, 1rem);
+        }
+        .footer-link,
+        .footer-contact-link {
+          font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+        }
+        .footer-contact-link i {
+          font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+        }
+        .terms-row {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: clamp(0.3rem, 0.8vw, 0.5rem);
+        }
+      }
+      .main {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- Left: Logo -->
+        <a class="navbar-brand" href="index.html"
+          ><img src="images/logo..png" alt="GlobalLLC Logo"
+        /></a>
+        <!-- Hamburger Menu (Moved to Right) -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Center: Menu and Cart (in collapse) -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" aria-current="page"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"
+                ><i class="fas fa-info-circle"></i> About</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="products.html"
+                id="productsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                ><i class="fas fa-box"></i> Products</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li>
+                  <a class="dropdown-item" href="products.html#beauty"
+                    >Beauty</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="products.html#kitchen-appliances"
+                    >Kitchen Appliances</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#man-wears"
+                    >Man Wears</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#electronics"
+                    >Electronics</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </li>
+
+            <li class="nav-item d-lg-none cart-nav-item">
+              <a href="addtocart.html" class="nav-link">
+                <i class="fa-solid fa-cart-shopping me-2"></i> Cart
+                <span id="cart-count" class="badge rounded-pill">0</span>
+              </a>
+            </li>
+          </ul>
+          <!-- Search Bar (Inside Collapse for Small Screens) -->
+          <div class="navbar-search d-lg-none mt-2">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search products..."
+              onkeypress="if(event.key === 'Enter') filterProducts()"
+            />
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </div>
+        </div>
+        <!-- Right: Search and Cart (Visible on Large Screens) -->
+        <div class="navbar-right d-none d-lg-flex align-items-center">
+          <div class="navbar-search">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search products..."
+              onkeypress="if(event.key === 'Enter') filterProducts()"
+            />
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </div>
+          <a
+            href="addtocart.html"
+            class="ms-3 position-relative"
+            style="
+              display: inline-block;
+              width: clamp(40px, 8vw, 52px);
+              height: clamp(40px, 8vw, 52px);
+            "
+          >
+            <span
+              style="
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+              "
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count" class="position-absolute badge rounded-pill"
+                >0</span
+              >
+            </span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="about-hero" data-aos="fade-up" data-aos-duration="1200">
+      <div class="container">
+        <h1>About Global Scaleup LLC</h1>
+        <p>
+          Empowering people with quality products and exceptional service, we’re
+          redefining the online shopping experience with innovation and trust.
+        </p>
+        <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- Our Story Section -->
+    <section class="section" data-aos="fade-up" data-aos-duration="1200">
+      <h2 class="section-title">Our Story</h2>
+      <p>
+        Founded in 2020, Global Scaleup LLC began with a simple yet ambitious
+        vision: to make premium products accessible to everyone, anywhere. What
+        started as a small team passionate about quality and innovation has
+        grown into a global e-commerce platform, serving thousands of customers
+        across beauty, tech, fashion, and home essentials. Our journey is rooted
+        in a commitment to excellence, driven by our belief that shopping should
+        be seamless, inspiring, and trustworthy. From curating cutting-edge
+        electronics to offering sustainable fashion, we’ve built a brand that
+        stands for reliability and forward-thinking solutions.
+      </p>
+    </section>
+
+    <!-- Milestones Section -->
+    <section class="section" data-aos="fade-up" data-aos-duration="1200">
+      <h2 class="section-title">Our Milestones</h2>
+      <div class="timeline">
+        <div
+          class="timeline-item left"
+          data-aos="fade-right"
+          data-aos-delay="100"
+        >
+          <div class="dot"></div>
+          <div class="content">
+            <h4>2020 - Founded</h4>
+            <p>
+              Global Scaleup LLC was born with a mission to redefine e-commerce.
+            </p>
+          </div>
+        </div>
+        <div
+          class="timeline-item right"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
+          <div class="dot"></div>
+          <div class="content">
+            <h4>2021 - First Product Launch</h4>
+            <p>
+              Introduced our beauty and electronics lines, gaining thousands of
+              customers.
+            </p>
+          </div>
+        </div>
+        <div
+          class="timeline-item left"
+          data-aos="fade-right"
+          data-aos-delay="300"
+        >
+          <div class="dot"></div>
+          <div class="content">
+            <h4>2022 - Global Expansion</h4>
+            <p>Expanded to many countries, offering fast shipping worldwide.</p>
+          </div>
+        </div>
+        <div
+          class="timeline-item right"
+          data-aos="fade-left"
+          data-aos-delay="400"
+        >
+          <div class="dot"></div>
+          <div class="content">
+            <h4>2023 - Sustainability Commitment</h4>
+            <p>
+              Launched eco-friendly packaging and sustainable product lines.
+            </p>
+          </div>
+        </div>
+        <div
+          class="timeline-item left"
+          data-aos="fade-right"
+          data-aos-delay="500"
+        >
+          <div class="dot"></div>
+          <div class="content">
+            <h4>2024 - 1 Million Customers</h4>
+            <p>
+              Reached a milestone of serving over 1 million happy customers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section" data-aos="fade-up" data-aos-duration="1200">
+      <h2 class="section-title">Our Mission & Vision</h2>
+      <p>
+        At Global Scaleup LLC, our mission is to deliver exceptional products
+        that enhance lives while fostering trust and sustainability. Our vision
+        is to lead the e-commerce industry by combining innovation, quality, and
+        community impact, creating a shopping experience that inspires and
+        empowers.
+      </p>
+      <div class="values">
+        <div class="value-box" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-users"></i>
+          <h4>Customer First</h4>
+          <p>
+            We prioritize your satisfaction with unparalleled quality,
+            personalized service, and 24/7 support.
+          </p>
+        </div>
+        <div class="value-box" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-lightbulb"></i>
+          <h4>Innovation</h4>
+          <p>
+            We embrace the latest trends and technologies to bring you
+            cutting-edge products and solutions.
+          </p>
+        </div>
+        <div class="value-box" data-aos="zoom-in" data-aos-delay="500">
+          <i class="fas fa-globe"></i>
+          <h4>Global Reach</h4>
+          <p>
+            Our network spans across borders, delivering excellence to customers
+            worldwide.
+          </p>
+        </div>
+        <div class="value-box" data-aos="zoom-in" data-aos-delay="600">
+          <i class="fas fa-chart-line"></i>
+          <h4>Growth & Excellence</h4>
+          <p>
+            We strive for continuous improvement, aiming to exceed expectations
+            in every aspect.
+          </p>
+        </div>
+        <div class="value-box" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-handshake"></i>
+          <h4>Trust</h4>
+          <p>
+            Built on honesty and transparency, we ensure every interaction is
+            reliable and authentic.
+          </p>
+        </div>
+        <div class="value-box" data-aos="zoom-in" data-aos-delay="400">
+          <i class="fas fa-leaf"></i>
+          <h4>Sustainability</h4>
+          <p>
+            Committed to eco-friendly practices, from packaging to product
+            sourcing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section" data-aos="fade-up" data-aos-duration="1200">
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="features">
+        <div class="feature-box" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-star"></i>
+          <h4>Quality Products</h4>
+          <p>
+            Each product is rigorously tested to meet the highest standards of
+            performance and durability.
+          </p>
+        </div>
+        <div class="feature-box" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-truck"></i>
+          <h4>Fast Shipping</h4>
+          <p>
+            Swift and reliable delivery ensures your products arrive when you
+            need them, anywhere in the world.
+          </p>
+        </div>
+        <div class="feature-box" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-headset"></i>
+          <h4>24/7 Support</h4>
+          <p>
+            Our dedicated team is available round-the-clock to answer questions
+            and resolve issues.
+          </p>
+        </div>
+        <div class="feature-box" data-aos="zoom-in" data-aos-delay="400">
+          <i class="fas fa-user-check"></i>
+          <h4>Personalized Shopping</h4>
+          <p>
+            Enjoy tailored recommendations and a shopping experience customized
+            to your needs.
+          </p>
+        </div>
+        <div class="feature-box" data-aos="zoom-in" data-aos-delay="500">
+          <i class="fas fa-recycle"></i>
+          <h4>Eco-Friendly Packaging</h4>
+          <p>
+            We use sustainable, biodegradable materials to minimize our
+            environmental impact.
+          </p>
+        </div>
+        <div class="feature-box" data-aos="zoom-in" data-aos-delay="600">
+          <i class="fas fa-shield-alt"></i>
+          <h4>Secure Payments</h4>
+          <p>
+            Shop with confidence using our encrypted transactions and diverse
+            payment options.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" data-aos="fade-up" data-aos-duration="1200">
+      <h2 class="section-title">Meet Our Team</h2>
+      <div class="team">
+        <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
+          <img src="images/member1.jpeg" alt="Adeel Saleem" />
+          <h4>Adeel Saleem</h4>
+          <p class="role">Founder & CEO</p>
+          <p>
+            With 10+ years in e-commerce, I founded Global Scaleup to help
+            businesses grow and thrive. We don’t just build the brands - we also
+            scale success worldwide.
+          </p>
+        </div>
+        <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
+          <img src="images/member3.jpeg" alt="Serum Siddiqui" />
+          <h4>Serum Siddiqui</h4>
+          <p class="role">Technology Lead</p>
+          <p>
+            As Technology Head, I deliver scalable solutions that drive
+            innovation, ensure efficiency, and support in our sustainable
+            business growth.
+          </p>
+        </div>
+        <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
+          <img src="images/member2.jpg" alt="Ayaz Ahmed" />
+          <h4>Ayaz Ahmed</h4>
+          <p class="role">Marketing Head</p>
+          <p>
+            As Marketing Head, I craft data-driven strategies in our business
+            that boost brand visibility, drive growth, and build lasting
+            customer connections.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" data-aos="fade-up" data-aos-duration="1200">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonials">
+        <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars">★★★★★</div>
+          <p>
+            Great quality and fast delivery. Always a pleasure shopping with
+            Global Scaleup LLC!
+          </p>
+          <h4>Sarah M.</h4>
+        </div>
+        <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars">★★★★☆</div>
+          <p>
+            The electronics are top-notch, and their customer service team
+            resolved my query in minutes!
+          </p>
+          <h4>John D.</h4>
+        </div>
+        <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars">★★★★★</div>
+          <p>
+            I love their beauty product range. Every purchase feels like a
+            premium experience!
+          </p>
+          <h4>Emily R.</h4>
+        </div>
+        <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="400">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars">★★★★☆</div>
+          <p>
+            Their eco-friendly packaging and sustainable products make me a
+            proud customer.
+          </p>
+          <h4>Ali H.</h4>
+        </div>
+        <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="500">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars">★★★★★</div>
+          <p>
+            Personalized recommendations made shopping so easy. Highly
+            recommend!
+          </p>
+          <h4>Lina K.</h4>
+        </div>
+        <div class="testimonial-box" data-aos="zoom-in" data-aos-delay="600">
+          <i class="fas fa-quote-left"></i>
+          <div class="stars">★★★★★</div>
+          <p>
+            GlobalLLC never disappoints. Their product variety and prices are
+            unbeatable!
+          </p>
+          <h4>Usman R.</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Impact Section -->
+    <section
+      class="community-section"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
+      <div class="container">
+        <h2 class="section-title">Our Community Impact</h2>
+        <p>
+          At Global Scaleup LLC, we believe in giving back. Our sustainability
+          initiatives include using 100% biodegradable packaging and partnering
+          with local artisans for eco-friendly products. We also support
+          education programs, donating 5% of our profits to schools in
+          underserved communities. Together, we’re building a better future.
+        </p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Get Involved</a>
+      </div>
+    </section>
+
+    <!-- footer  -->
+    <footer>
+      <div class="container">
+        <div class="main">
+          <div class="footer-section">
+            <div>
+              <h4 class="footer-title">CATEGORIES</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="products.html#beauty" class="footer-link">Beauty</a>
+                </li>
+                <li>
+                  <a href="products.html#kitchen-appliances" class="footer-link"
+                    >Kitchen</a
+                  >
+                </li>
+                <li>
+                  <a href="products.html#beauty" class="footer-link"
+                    >Cosmetic</a
+                  >
+                </li>
+                <li>
+                  <a href="products.html#man-wears" class="footer-link"
+                    >New Arrivals</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <!-- <h4 class="footer-title">CATEGORIES</h4> -->
+            <div class="footer-title">QUICK LINKS</div>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="footer-link">Home</a></li>
+              <li><a href="about.html" class="footer-link">About</a></li>
+              <li><a href="products.html" class="footer-link">Products</a></li>
+              <li><a href="contact.html" class="footer-link">Contact</a></li>
+            </ul>
+          
+
+          </div>
+       
+            <div>
+              
+            <!-- <h4 class="footer-title">CATEGORIES</h4> -->
+            <div class="footer-title">SUPPORT</div>
+            <ul class="list-unstyled">
+              <li><a href="contact.html" class="footer-link">FAQs</a></li>
+              <li><a href="addtocart.html" class="footer-link">Shipping</a></li>
+              <li><a href="addtocart.html" class="footer-link">Returns</a></li>
+            </ul>
+          </div>
+           
+          <div>
+     <ul class="list-unstyled">
+             <div class="footer-title">COMPANY</div>
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="about.html" class="footer-link">Our Mission</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Press</a></li>
+        </ul>
+          </div>
+     <div>
+      <div class="footer-title">CONTACT</div>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href="https://www.globalscaleupllc.com" target="_blank" class="footer-contact-link">
+              <i class="fas fa-globe text-primary"></i> www.globalscaleupllc.com
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="mailto:support@globalscaleupllc.com" class="footer-contact-link">
+              <i class="fas fa-envelope text-primary"></i> info@globalscaleupllc.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+17372831916" class="footer-contact-link">
+              <i class="fas fa-phone text-primary"></i> +1 737-283-1916
+            </a>
+          </li>
+        </ul>
+     </div>
+        </div>
+
+        <hr />
+        <div class="terms-row">
+          <a href="#" class="footer-link company-name">Global Scaleup LLC</a>
+          <a href="#" class="footer-link">All Rights Reserved</a>
+          <a href="#" class="footer-link">Terms and Conditions</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+        </div>
+        
+      </div>
+    </footer>
+    <!-- Scroll to Top Button -->
+    <div
+      class="scroll-to-top"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        offset: 100,
+      });
+
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        document
+          .querySelectorAll("#cart-count, #cart-count-mobile")
+          .forEach((el) => (el.textContent = cart.length));
+      }
+
+      function filterProducts() {
+        const searchInput =
+          document.getElementById("searchInput")?.value.toLowerCase() ||
+          document.getElementById("searchInputMobile")?.value.toLowerCase();
+        const products = [
+          {
+            name: "Foundation",
+            category: "beauty",
+            url: "products.html#beauty",
+          },
+          { name: "Lipstick", category: "beauty", url: "products.html#beauty" },
+          {
+            name: "Concealer",
+            category: "beauty",
+            url: "products.html#beauty",
+          },
+          {
+            name: "Face Powder",
+            category: "beauty",
+            url: "products.html#beauty",
+          },
+          {
+            name: "Moisturizer Lotion",
+            category: "beauty",
+            url: "products.html#beauty",
+          },
+          {
+            name: "Night Cream",
+            category: "beauty",
+            url: "products.html#beauty",
+          },
+          { name: "Blush On", category: "beauty", url: "products.html#beauty" },
+          { name: "Mascara", category: "beauty", url: "products.html#beauty" },
+          {
+            name: "Hand Mixer",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Knife Set",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Juicer Blender",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Oven",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Plates Set",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Toaster",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Coffee Maker",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Rice Cooker",
+            category: "kitchen",
+            url: "products.html#kitchen-appliances",
+          },
+          {
+            name: "Men's Denim Jacket",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Casual Cotton Shirt",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Shirts",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Regular Fit Jeans",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Casual Sneakers",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Stylish Wrist Watch",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Winter Hoodie",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Baseball Cap",
+            category: "man-wears",
+            url: "products.html#man-wears",
+          },
+          {
+            name: "Microwave Oven",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "Electric Kettle",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "Toaster",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "Blender Machine",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "Electric Iron",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "32'' LED TV",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "Wireless Headphones",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+          {
+            name: "Mini Air Cooler",
+            category: "electronics",
+            url: "products.html#electronics",
+          },
+        ];
+
+        if (searchInput?.length > 0) {
+          const filteredProducts = products.filter(
+            (product) =>
+              product.name.toLowerCase().includes(searchInput) ||
+              product.category.toLowerCase().includes(searchInput)
+          );
+          if (filteredProducts.length > 0) {
+            const firstMatch = filteredProducts[0];
+            window.location.href = firstMatch.url;
+          } else {
+            Swal.fire({
+              icon: "info",
+              title: "Not Found",
+              text: "This product has not been launched yet.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartCount();
+        const scrollToTopBtn = document.querySelector(".scroll-to-top");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add("show");
+          } else {
+            scrollToTopBtn.classList.remove("show");
+          }
+        });
+
+        // Timeline dot animation on scroll
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.querySelector(".dot").style.transform =
+                  "translateY(-50%) scale(1.3)";
+                setTimeout(() => {
+                  entry.target.querySelector(".dot").style.transform =
+                    "translateY(-50%) scale(1)";
+                }, 1000);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        timelineItems.forEach((item) => observer.observe(item));
+      });
+    </script>
+  </body>
+</html>

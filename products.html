@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Global Scaleup LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: "Inter", sans-serif;
+      background-image: linear-gradient(to right top, #f2f6f7, #eef7f9, #eaf9fb, #e5fafc, #e1fcfc, #cef0f1, #bae3e6, #a7d7db, #81bac5, #5d9db0, #39809c, #0b6488);
+      color: #1f2937;
+    }
+    .container {
+      max-width: 1140px;
+      padding: 0 15px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    /* Navbar Styles */
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+    .navbar-brand img {
+      height: clamp(36px, 8vw, 48px);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+    .nav-link {
+      color: #1E40AF !important;
+      font-weight: 600;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #60A5FA !important;
+    }
+    .dropdown-menu {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-item {
+      color: #1F2937;
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+    .dropdown-item:hover {
+      color: #60A5FA;
+      background: #F1F5F9;
+    }
+    .navbar-search {
+      position: relative;
+      max-width: clamp(200px, 25vw, 300px);
+      margin: 0.5rem 0;
+    }
+    .navbar-search input {
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border: 2px solid #D1D5DB;
+      border-radius: 20px;
+      font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .navbar-search input:focus {
+      border-color: #60A5FA;
+      box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25);
+      outline: none;
+    }
+    .navbar-search i {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #1E40AF;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      cursor: pointer;
+    }
+    .cart-icon {
+      position: relative;
+      display: inline-block;
+      width: clamp(40px, 8vw, 52px);
+      height: clamp(40px, 8vw, 52px);
+    }
+    #cart-count {
+      position: absolute;
+      top: 10%;
+      left: 70%;
+      background: #1E40AF;
+      color: #ffffff;
+      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+      min-width: 22px;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      animation: bounce 1.5s infinite;
+    }
+    #cart-count-mobile {
+      background: #1E40AF;
+      color: #ffffff;
+      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+      min-width: 22px;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      animation: bounce 1.5s infinite;
+    }
+    .fa-cart-shopping {
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      color: #1E40AF;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .fa-cart-shopping:hover {
+      color: #60A5FA;
+      transform: scale(1.2);
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    /* Product Section Styles */
+    .product-section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: clamp(1rem, 2vw, 3rem);
+      background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+    .product-section-title::after {
+      content: "";
+      display: block;
+      margin: 0.5rem auto 0;
+      width: clamp(60px, 8vw, 100px);
+      height: 4px;
+      border-radius: 3px;
+      background: #60A5FA;
+    }
+    .category-section {
+      margin-bottom: 4rem;
+      padding: 3rem 0;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border: 2px solid #60A5FA;
+    }
+    .product-card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      object-fit: fill;
+      height: 220px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+    .card-body {
+      padding: 1.8rem;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 0.6rem;
+    }
+    .card-text {
+      font-size: 1.1rem;
+      color: #1E40AF;
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #1E40AF 0%, #60A5FA 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #60A5FA 0%, #1E40AF 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .btn-secondary {
+      background: linear-gradient(90deg, #111827 0%, #374151 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      margin-top: 0.6rem;
+    }
+    .btn-secondary:hover {
+      background: linear-gradient(90deg, #60A5FA 0%, #1E40AF 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+   
+    
+    /* Footer Styles */
+    footer {
+      background: #1e334f;
+      color: #d3e0ea;
+      padding: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2rem);
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+      font-weight: 700;
+      color: #60a5fa;
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      position: relative;
+      display: inline-block;
+    }
+        .footer-link,
+    .footer-contact-link {
+      color: #d3e0ea;
+      text-decoration: none;
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: block;
+      margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+    }
+
+    .footer-link:hover,
+    .footer-contact-link:hover {
+      color: #80b3ff;
+      transform: translateX(5px);
+    }
+    
+    /* Scroll to Top */
+    .scroll-to-top {
+      position: fixed;
+      bottom: clamp(20px, 5vw, 30px);
+      right: clamp(20px, 3vw, 30px);
+      background: linear-gradient(45deg, #1E40AF, #60A5FA);
+      color: #ffffff;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.5rem, 3vw, 1.8rem);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    /* Responsive Styles */
+    /* @media (max-width: 991px) {
+      .navbar {
+        padding: 0.5rem 0;
+      }
+      .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #ffffff;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        z-index: 1000;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: left;
+      }
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+      }
+      .nav-link i {
+        margin-right: 0.5rem;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      }
+      .navbar-search {
+        max-width: 100%;
+      }
+      .cart-nav-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .cart-nav-item #cart-count-mobile {
+        position: static;
+        margin-left: 0.5rem;
+      }
+    } */
+  
+  @media (max-width: 991px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1000;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    text-align: left;
+    width: auto;
+  }
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+  }
+  .nav-link i {
+    margin-right: 0.5rem;
+  }
+  .navbar-search {
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+  .cart-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .cart-nav-item #cart-count {
+    position: static;
+    margin-left: 0.5rem;
+  }
+}
+  
+    @media (max-width: 768px) {
+      .product-section-title {
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
+      }
+      .card-title {
+        font-size: 1.2rem;
+      }
+      .card-text {
+        font-size: 1rem;
+      }
+      .product-card img {
+        height: 180px;
+        object-fit: fill;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+      }
+      .footer .row.mb-4.gy-4 {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer .col-6.col-sm-4.col-md-2,
+      .footer .col-12.col-sm-8.col-md-4 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .footer-contact-link {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 576px) {
+      .navbar {
+        padding: 0.7rem 0;
+      }
+      .container {
+        padding: 0 10px;
+      }
+      .navbar-search input {
+        font-size: 0.85rem;
+      }
+      .fa-cart-shopping {
+        font-size: 1.8rem;
+      }
+      #cart-count,
+      #cart-count-mobile {
+        font-size: 0.8rem;
+        min-width: 18px;
+        min-height: 18px;
+      }
+      .product-section-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+      }
+      .product-card {
+        margin-bottom: 2rem;
+      }
+      .product-card img {
+        height: 150px;
+        object-fit: fill;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .footer-title {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+      .footer-link,
+      .footer-contact-link {
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+      }
+      .scroll-to-top {
+        width: clamp(40px, 6vw, 50px);
+        height: clamp(40px, 6vw, 50px);
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      }
+    }
+    @media (max-width: 400px) {
+      .navbar {
+        padding: 0.6rem 0;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+      }
+      .navbar-search input {
+        padding: 0.4rem 2rem 0.4rem 0.8rem;
+      }
+      .navbar-search i {
+        font-size: 0.85rem;
+        right: 0.8rem;
+      }
+      .cart-icon {
+        width: 40px;
+        height: 40px;
+      }
+      .fa-cart-shopping {
+        font-size: 1.6rem;
+      }
+      #cart-count,
+      #cart-count-mobile {
+        font-size: 0.75rem;
+        min-width: 16px;
+        min-height: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo..png" alt="GlobalLLC Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="products.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-box"></i> Products</a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item" href="#beauty">Beauty</a></li>
+              <li><a class="dropdown-item" href="#kitchen-appliances">Kitchen Appliances</a></li>
+              <li><a class="dropdown-item" href="#man-wears">Man Wears</a></li>
+              <li><a class="dropdown-item" href="#electronics">Electronics</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          <li class="nav-item navbar-search d-lg-none">
+            <input type="text" id="searchInputMobile" placeholder="Search products..." onkeypress="if(event.key === 'Enter') filterProducts()">
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </li>
+          <li class="nav-item cart-nav-item d-lg-none">
+            <a href="addtocart.html" class="nav-link">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count-mobile" class="badge rounded-pill">0</span>
+            </a>
+          </li>
+        </ul>
+        <div class="navbar-right d-none d-lg-flex align-items-center">
+          <div class="navbar-search">
+            <input type="text" id="searchInput" placeholder="Search products..." onkeypress="if(event.key === 'Enter') filterProducts()">
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </div>
+          <a href="addtocart.html" class="cart-icon ms-3">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="badge rounded-pill">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav> -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- Left: Logo -->
+        <a class="navbar-brand" href="index.html"
+          ><img src="images/logo..png" alt="GlobalLLC Logo"
+        /></a>
+        <!-- Hamburger Menu (Moved to Right) -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Center: Menu and Cart (in collapse) -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" aria-current="page"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"
+                ><i class="fas fa-info-circle"></i> About</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="products.html"
+                id="productsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                ><i class="fas fa-box"></i> Products</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li>
+                  <a class="dropdown-item" href="products.html#beauty"
+                    >Beauty</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="products.html#kitchen-appliances"
+                    >Kitchen Appliances</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#man-wears"
+                    >Man Wears</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html#electronics"
+                    >Electronics</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </li>
+            
+            <li class="nav-item d-lg-none cart-nav-item">
+  <a href="addtocart.html" class="nav-link">
+    <i class="fa-solid fa-cart-shopping me-2"></i> Cart
+    <span id="cart-count" class="badge rounded-pill">0</span>
+  </a>
+</li>
+          </ul>
+          <!-- Search Bar (Inside Collapse for Small Screens) -->
+          <div class="navbar-search d-lg-none mt-2">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search products..."
+              onkeypress="if(event.key === 'Enter') filterProducts()"
+            />
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </div>
+        </div>
+        <!-- Right: Search and Cart (Visible on Large Screens) -->
+        <div class="navbar-right d-none d-lg-flex align-items-center">
+          <div class="navbar-search">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search products..."
+              onkeypress="if(event.key === 'Enter') filterProducts()"
+            />
+            <i class="fas fa-search" onclick="filterProducts()"></i>
+          </div>
+          <a
+            href="addtocart.html"
+            class="ms-3 position-relative"
+            style="
+              display: inline-block;
+              width: clamp(40px, 8vw, 52px);
+              height: clamp(40px, 8vw, 52px);
+            "
+          >
+            <span
+              style="
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+              "
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count" class="position-absolute badge rounded-pill"
+                >0</span
+              >
+            </span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+
+  <!-- Beauty Category -->
+  <section class="category-section" id="beauty" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="product-section-title">Beauty</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/Foundation.jpeg" class="card-img-top" alt="Foundation" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Foundation</h5>
+              <p class="card-text mb-2">$12.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Foundation" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/Lipstick.jpg" class="card-img-top" alt="Lipstick" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Lipstick</h5>
+              <p class="card-text mb-2">$6.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Lipstick" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/Concealer.jpeg" class="card-img-top" alt="Concealer" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Concealer</h5>
+              <p class="card-text mb-2">$10.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Concealer" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/Facepowder.jpeg" class="card-img-top" alt="Face Powder" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Face Powder</h5>
+              <p class="card-text mb-2">$13.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Face Powder" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/lotions.png" class="card-img-top" alt="Moisturizer Lotion" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Moisturizer Lotion</h5>
+              <p class="card-text mb-2">$12.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Moisturizer Lotion" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/NightCReam.jpeg" class="card-img-top" alt="Night Cream" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Night Cream</h5>
+              <p class="card-text mb-2">$7.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Night Cream" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/blush image.jpeg" class="card-img-top" alt="Blush On" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Blush On</h5>
+              <p class="card-text mb-2">$15.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Blush On" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/Mascara.jpeg" class="card-img-top" alt="Mascara" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Mascara</h5>
+              <p class="card-text mb-2">$6.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Mascara" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kitchen Appliances Category -->
+  <section class="category-section" id="kitchen-appliances" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="product-section-title">Kitchen Appliances</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/handmixerr img.jpg" class="card-img-top" alt="Hand Mixer" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Hand Mixer</h5>
+              <p class="card-text mb-2">$140.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Hand Mixer" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/KnifeSet.jpeg" class="card-img-top" alt="Knife Set" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Knife Set</h5>
+              <p class="card-text mb-2">$34.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Knife Set" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/JuicerBlender.jpeg" class="card-img-top" alt="Juicer Blender" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Juicer Blender</h5>
+              <p class="card-text mb-2">$299.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Juicer Blender" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/microwave oven image.jpg" class="card-img-top" alt="Oven" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Oven</h5>
+              <p class="card-text mb-2">$300.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Oven" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/plate set image.jpg" class="card-img-top" alt="Plates Set" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Plates Set</h5>
+              <p class="card-text mb-2">$40.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Plates Set" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/toaster.jpeg" class="card-img-top" alt="Toaster" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Toaster</h5>
+              <p class="card-text mb-2">$200.49</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Toaster" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/cofee maker image.jfif" class="card-img-top" alt="Coffee Maker" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Coffee Maker</h5>
+              <p class="card-text mb-2">$150.40</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Coffee Maker" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/Rice kokar image.avif" class="card-img-top" alt="Rice Cooker" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Rice Cooker</h5>
+              <p class="card-text mb-2">$189.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Rice Cooker" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Man Wears Category -->
+  <section class="category-section" id="man-wears" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="product-section-title">Man Wears</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/jacket image.jpg" class="card-img-top" alt="Men's Denim Jacket" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Men's Denim Jacket</h5>
+              <p class="card-text mb-2">$39.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Men's Denim Jacket" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/cotton shirt image.jfif" class="card-img-top" alt="Casual Cotton Shirt" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Casual Cotton Shirt</h5>
+              <p class="card-text mb-2">$24.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Casual Cotton Shirt" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/shirts.jpeg" class="card-img-top" alt="Shirts" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Shirts</h5>
+              <p class="card-text mb-2">$25.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Shirts" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/regular jeans image.webp" class="card-img-top" alt="Regular Fit Jeans" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Regular Fit Jeans</h5>
+              <p class="card-text mb-2">$30.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Regular Fit Jeans" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/sneaker image.jfif" class="card-img-top" alt="Casual Sneakers" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Casual Sneakers</h5>
+              <p class="card-text mb-2">$150.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Casual Sneakers" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/wrist watch image.jpg" class="card-img-top" alt="Stylish Wrist Watch" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Stylish Wrist Watch</h5>
+              <p class="card-text mb-2">$170.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Stylish Wrist Watch" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/hoodie image.jpg" class="card-img-top" alt="Winter Hoodie" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Winter Hoodie</h5>
+              <p class="card-text mb-2">$34.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Winter Hoodie" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/baseball cap image.jpg" class="card-img-top" alt="Baseball Cap" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Baseball Cap</h5>
+              <p class="card-text mb-2">$9.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Baseball Cap" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Electronics Category -->
+  <section class="category-section" id="electronics" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="product-section-title">Electronics</h2>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/microwave oven image.jpg" class="card-img-top" alt="Microwave Oven" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Microwave Oven</h5>
+              <p class="card-text mb-2">$250.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Microwave Oven" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/electric kettle image.jpg" class="card-img-top" alt="Electric Kettle" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Electric Kettle</h5>
+              <p class="card-text mb-2">$150.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Electric Kettle" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/toaster.jpeg" class="card-img-top" alt="Toaster" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Toaster</h5>
+              <p class="card-text mb-2">$200.93</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Toaster" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/blender matchine image.webp" class="card-img-top" alt="Blender Machine" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Blender Machine</h5>
+              <p class="card-text mb-2">$150.79</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Blender Machine" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card product-card h-100">
+            <img src="images/electric iron image.webp" class="card-img-top" alt="Electric Iron" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Electric Iron</h5>
+              <p class="card-text mb-2">$120.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Electric Iron" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card product-card h-100">
+            <img src="images/LED Image.jfif" class="card-img-top" alt="32'' LED TV" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">32'' LED TV</h5>
+              <p class="card-text mb-2">$370.00</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=32'' LED TV" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+          <div class="card product-card h-100">
+            <img src="images/headphones.png" class="card-img-top" alt="Wireless Headphones" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Wireless Headphones</h5>
+              <p class="card-text mb-2">$49.99</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Wireless Headphones" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="card product-card h-100">
+            <img src="images/aircooler.webp" class="card-img-top" alt="Mini Air Cooler" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Mini Air Cooler</h5>
+              <p class="card-text mb-2">$409.89</p>
+              <button class="btn btn-primary mt-auto add-to-cart-btn">Add to Cart</button>
+              <a href="product-details.html?title=Mini Air Cooler" class="btn btn-secondary mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer
+  style="
+    background: #1a2a44;
+    color: #d3e0ea;
+    padding: 2rem 0 1rem 0;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+  "
+>
+  <div class="container">
+    <div class="row mb-4 gy-4">
+      <!-- CATEGORIES -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title" style="font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 600; color: #60a5fa; margin-bottom: 1rem;">CATEGORIES</div>
+        <ul class="list-unstyled">
+          <li><a href="products.html#beauty" class="footer-link">Beauty</a></li>
+          <li><a href="products.html#kitchen-appliances" class="footer-link">Kitchen</a></li>
+          <li><a href="products.html#beauty" class="footer-link">Cosmetic</a></li>
+          <li><a href="products.html#man-wears" class="footer-link">New Arrivals</a></li>
+        </ul>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title">QUICK LINKS</div>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="products.html" class="footer-link">Products</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title">SUPPORT</div>
+        <ul class="list-unstyled">
+          <li><a href="contact.html" class="footer-link">FAQs</a></li>
+          <li><a href="addtocart.html" class="footer-link">Shipping</a></li>
+          <li><a href="addtocart.html" class="footer-link">Returns</a></li>
+        </ul>
+      </div>
+
+      <!-- COMPANY -->
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="footer-title">COMPANY</div>
+        <ul class="list-unstyled">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="about.html" class="footer-link">Our Mission</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-12 col-sm-8 col-md-4">
+        <div class="footer-title">CONTACT</div>
+          
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href="https://www.globalscaleupllc.com" target="_blank" class="footer-contact-link">
+              <i class="fas fa-globe text-primary"></i> www.globalscaleupllc.com
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="mailto:support@globalscaleupllc.com" class="footer-contact-link">
+              <i class="fas fa-envelope text-primary"></i> info@globalscaleupllc.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+17372831916" class="footer-contact-link">
+              <i class="fas fa-phone text-primary"></i> +1 737-283-1916
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr style="border-color: rgba(255, 255, 255, 0.2);" />
+
+    <!-- Terms Row -->
+    <div class="row justify-content-center text-center">
+      <div class="col-12 d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+        <!-- Text Links -->
+        <a href="#" class="footer-link" style="font-weight: bolder; font-size: 1.25rem;">Global Scaleup LLC</a>
+        <a href="#" class="footer-link fw-semibold mx-2">All Rights Reserved</a>
+           <a href="#" class="footer-link fw-semibold mx-2">Terms and Conditions</a>
+          <a href="#" class="footer-link fw-semibold mx-2">Privacy Policy</a>
+        <!-- Terms Links -->
+        <div>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      offset: 100
+    });
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.querySelectorAll('#cart-count, #cart-count-mobile').forEach(el => el.textContent = cart.length);
+    }
+
+    function addToCart(title, price, image) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ title, price, image });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart',
+        text: `${title} has been added to your cart.`,
+        showConfirmButton: false,
+        timer: 1200
+      });
+    }
+
+    function filterProducts() {
+      const searchInput = document.getElementById('searchInput')?.value.toLowerCase() ||
+                         document.getElementById('searchInputMobile')?.value.toLowerCase();
+      const products = [
+        { name: "Foundation", category: "beauty", url: "#beauty" },
+        { name: "Lipstick", category: "beauty", url: "#beauty" },
+        { name: "Concealer", category: "beauty", url: "#beauty" },
+        { name: "Face Powder", category: "beauty", url: "#beauty" },
+        { name: "Moisturizer Lotion", category: "beauty", url: "#beauty" },
+        { name: "Night Cream", category: "beauty", url: "#beauty" },
+        { name: "Blush On", category: "beauty", url: "#beauty" },
+        { name: "Mascara", category: "beauty", url: "#beauty" },
+        { name: "Hand Mixer", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Knife Set", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Juicer Blender", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Oven", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Plates Set", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Toaster", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Coffee Maker", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Rice Cooker", category: "kitchen", url: "#kitchen-appliances" },
+        { name: "Men's Denim Jacket", category: "man-wears", url: "#man-wears" },
+        { name: "Casual Cotton Shirt", category: "man-wears", url: "#man-wears" },
+        { name: "Shirts", category: "man-wears", url: "#man-wears" },
+        { name: "Regular Fit Jeans", category: "man-wears", url: "#man-wears" },
+        { name: "Casual Sneakers", category: "man-wears", url: "#man-wears" },
+        { name: "Stylish Wrist Watch", category: "man-wears", url: "#man-wears" },
+        { name: "Winter Hoodie", category: "man-wears", url: "#man-wears" },
+        { name: "Baseball Cap", category: "man-wears", url: "#man-wears" },
+        { name: "Microwave Oven", category: "electronics", url: "#electronics" },
+        { name: "Electric Kettle", category: "electronics", url: "#electronics" },
+        { name: "Toaster", category: "electronics", url: "#electronics" },
+        { name: "Blender Machine", category: "electronics", url: "#electronics" },
+        { name: "Electric Iron", category: "electronics", url: "#electronics" },
+        { name: "32'' LED TV", category: "electronics", url: "#electronics" },
+        { name: "Wireless Headphones", category: "electronics", url: "#electronics" },
+        { name: "Mini Air Cooler", category: "electronics", url: "#electronics" }
+      ];
+
+      if (searchInput?.length > 0) {
+        const filteredProducts = products.filter(product =>
+          product.name.toLowerCase().includes(searchInput) ||
+          product.category.toLowerCase().includes(searchInput)
+        );
+        if (filteredProducts.length > 0) {
+          const firstMatch = filteredProducts[0];
+          window.location.href = firstMatch.url;
+        } else {
+          Swal.fire({
+            icon: 'info',
+            title: 'Not Found',
+            text: 'This product has not been launched yet.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartCount();
+      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const card = btn.closest('.product-card, .card');
+          const title = card.querySelector('.card-title, h5, h4').textContent.trim();
+          const priceText = card.querySelector('.card-text, p').textContent.match(/\$[\d\.]+/);
+          const price = priceText ? parseFloat(priceText[0].replace('$','')) : 0;
+          const image = card.querySelector('img').src;
+          addToCart(title, price, image);
+        });
+      });
+
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
